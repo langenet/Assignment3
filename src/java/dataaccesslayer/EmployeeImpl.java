@@ -11,34 +11,36 @@ import java.util.List;
  *
  * @author Robert
  */
-public class Titles implements TitlesDao{
+public class EmployeeImpl implements EmployeeDao {
 
-    Titles(){
+    EmployeeImpl(){      
     }
 
     @Override
-    public void add(Titles title) {
+    public void add(EmployeeImpl employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Employee> view() {
+    public List<EmployeeImpl> view() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Titles getById(int empNo) {
+    public EmployeeImpl getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(Employee employee) {
+    public void delete(EmployeeImpl employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(Employee employee) {
+    public void edit(EmployeeImpl employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
     
 }

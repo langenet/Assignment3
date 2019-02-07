@@ -13,10 +13,10 @@ import java.util.List;
  */
 public interface DeptManagerDao {
     
-    void addDptMgr(DeptManager deptManager);
-    List<Employee> view();
-    Employee getById(DeptManager deptManager);
-    void delete(DeptManager deptManager);
-    void edit(DeptManager deptManager);
+    void addDptMgr(DeptManagerImpl deptManager);
+    List<EmployeeImpl> view();
+    EmployeeImpl getById(DeptManagerImpl deptManager);
+    void delete(DeptManagerImpl deptManager);
+    void edit(DeptManagerImpl deptManager);
     
 }

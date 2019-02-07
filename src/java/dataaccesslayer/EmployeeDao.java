@@ -13,11 +13,11 @@ import java.util.List;
  */
 public interface EmployeeDao {
    
-    void add(Employee employee);
-    List<Employee> view();
-    Employee getById  (int id);
-    void delete(Employee employee);
-    void edit(Employee employee);
+    void add(EmployeeImpl employee);
+    List<EmployeeImpl> view();
+    EmployeeImpl getById  (int id);
+    void delete(EmployeeImpl employee);
+    void edit(EmployeeImpl employee);
     
     
     
