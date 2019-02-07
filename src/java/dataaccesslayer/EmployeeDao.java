@@ -5,10 +5,22 @@
  */
 package dataaccesslayer;
 
+import java.util.List;
+
 /**
  *
  * @author Robert
  */
 public interface EmployeeDao {
+   
+    void Employee();
+    void add(EmployeeImpl employee);
+    List<EmployeeImpl> view();
+    EmployeeImpl getById  (int id);
+    void delete(EmployeeImpl employee);
+    void edit(EmployeeImpl employee);
+    
+    
+    
     
 }
