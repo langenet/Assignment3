@@ -11,15 +11,15 @@ import java.util.List;
  *
  * @author Robert
  */
-public class Employee implements EmployeeDao {
+public class Titles implements TitlesDao{
 
     @Override
-    public void employee() {
+    public void title() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void add(Employee employee) {
+    public void add(Titles title) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -29,7 +29,7 @@ public class Employee implements EmployeeDao {
     }
 
     @Override
-    public Employee getById(int id) {
+    public Titles getById(int empNo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -42,7 +42,5 @@ public class Employee implements EmployeeDao {
     public void edit(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-   
     
 }
