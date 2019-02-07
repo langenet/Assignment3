@@ -11,16 +11,10 @@ import java.util.List;
  *
  * @author Robert
  */
-public interface EmployeeDao {
-   
-    void Employee();
-    void add(Employee employee);
+public interface DeptManagerDao {
+    
+    void Department();
+    void addDptMgr(DeptManager deptManager);
     List<Employee> view();
-    Employee getById  (int id);
-    void delete(Employee employee);
-    void edit(Employee employee);
-    
-    
-    
     
 }

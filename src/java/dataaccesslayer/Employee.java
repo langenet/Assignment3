@@ -11,7 +11,7 @@ import java.util.List;
  *
  * @author Robert
  */
-public class EmployeeImpl implements EmployeeDao {
+public class Employee implements EmployeeDao {
 
     @Override
     public void Employee() {
@@ -19,27 +19,27 @@ public class EmployeeImpl implements EmployeeDao {
     }
 
     @Override
-    public void add(EmployeeImpl employee) {
+    public void add(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<EmployeeImpl> view() {
+    public List<Employee> view() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public EmployeeImpl getById(int id) {
+    public Employee getById(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(EmployeeImpl employee) {
+    public void delete(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(EmployeeImpl employee) {
+    public void edit(Employee employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
