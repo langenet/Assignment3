@@ -6,8 +6,14 @@
 package controlllayer;
 
 import businesslayer.EmployeeService;
+import datatransferobjects.Employee;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,37 +39,86 @@ public class EmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        Employee employee = null;
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
         
-        /*
-        Example:
         
+//        Example:
+        
+        int empNo = -1;
+        Date birthDate = null, hireDate = null;
+        String firstName = "", lastName = "", gender = "";
+ 
         switch(request.getParameter("method")){
         case "add":
-            Employee employee = new Employee();
-            employee.setFirstName(request.getParameter("firstName");
-            .... fill in all the fields this way then...
             
-            employeeService.add(employee);
+            empNo = Integer.parseInt(request.getParameter("empNo"));
+            try{
+                
+            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
+            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+            }catch(ParseException parseException){
+                parseException.printStackTrace();
+            }
+            
+            firstName = request.getParameter("firstName");
+            lastName = request.getParameter("lastName");
+            gender = request.getParameter("gender");
+            
+            
+            
+            if(empNo > 0 ){
+                employee = new Employee.Builder(empNo, 
+                                                    birthDate, 
+                                                    firstName, 
+                                                    lastName, 
+                                                    gender, 
+                                                    hireDate).build();
+            }
+            
+            boolean success = employeeService.add(employee);
+           
+            if(success){
+                // display success page
+            }else{
+                //display error
+            }
+            
+        
+        
+        ;
+//            .... fill in all the fields this way then...
+            
+//            employeeService.add(employee);
         case "view":
-            employeeService.view();
-        etc...
-        
-        */
-        
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EmployeeServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet EmployeeServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+//            employeeService.view();
+        case "getById":
+            
+            
+            empNo = Integer.parseInt(request.getParameter("empNo"));
+            try{
+                
+            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
+            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+            }catch(ParseException parseException){
+                parseException.printStackTrace();
+            }
+            
+            firstName = request.getParameter("firstName");
+            lastName = request.getParameter("lastName");
+            gender = request.getParameter("gender");
+            
+            
+            
+            if(empNo > 0 ){
+                employee = new Employee.Builder(empNo, 
+                                                    birthDate, 
+                                                    firstName, 
+                                                    lastName, 
+                                                    gender, 
+                                                    hireDate).build();
+            }
         }
     }
 
@@ -106,4 +161,5 @@ public class EmployeeServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-}
+    }
+

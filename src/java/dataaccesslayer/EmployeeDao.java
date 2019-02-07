@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface EmployeeDao {
    
-    void add(Employee employee);
+    boolean add(Employee employee);
     List<Employee> view();
     Employee getById  (int id);
     void delete(Employee employee);

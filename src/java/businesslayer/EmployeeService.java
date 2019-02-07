@@ -16,8 +16,8 @@ import java.util.List;
 public class EmployeeService {
     private EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
     
-    public void add(Employee employee){
-        employeeDaoImpl.add(employee);
+    public boolean add(Employee employee){
+        return employeeDaoImpl.add(employee);  
     }
 
     public List<Employee> view() {
