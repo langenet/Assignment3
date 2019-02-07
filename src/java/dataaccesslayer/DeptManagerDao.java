@@ -16,5 +16,8 @@ public interface DeptManagerDao {
     void Department();
     void addDptMgr(DeptManager deptManager);
     List<Employee> view();
+    Employee getById(DeptManager deptManager);
+    void delete(DeptManager deptManager);
+    void edit(DeptManager deptManager);
     
 }
