@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Robert
  */
-public class EmployeeT {
+public class Employee {
     private int empNo;
     private Date birthDate;
     private String firstName;

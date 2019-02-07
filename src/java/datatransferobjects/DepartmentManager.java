@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Robert
  */
-public class DepartmentMgrT {
+public class DepartmentManager {
     private int empNo;
     private String deptNo;
     private Date fromDate;

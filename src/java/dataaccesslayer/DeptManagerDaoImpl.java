@@ -11,33 +11,33 @@ import java.util.List;
  *
  * @author Robert
  */
-public class DeptManagerImpl implements DeptManagerDao{
+public class DeptManagerDaoImpl implements DeptManagerDao{
 
-    DeptManagerImpl(){
+    DeptManagerDaoImpl(){
     }
 
     @Override
-    public void addDptMgr(DeptManagerImpl deptManager) {
+    public void addDptMgr(DeptManagerDaoImpl deptManager) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<EmployeeImpl> view() {
+    public List<EmployeeDaoImpl> view() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public EmployeeImpl getById(DeptManagerImpl deptManager) {
+    public EmployeeDaoImpl getById(DeptManagerDaoImpl deptManager) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void delete(DeptManagerImpl deptManager) {
+    public void delete(DeptManagerDaoImpl deptManager) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void edit(DeptManagerImpl deptManager) {
+    public void edit(DeptManagerDaoImpl deptManager) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

@@ -9,6 +9,6 @@ package datatransferobjects;
  *
  * @author Robert
  */
-public class TitlesT {
+public class Title {
     
 }
