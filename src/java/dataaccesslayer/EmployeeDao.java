@@ -5,6 +5,7 @@
  */
 package dataaccesslayer;
 
+import datatransferobjects.Employee;
 import java.util.List;
 
 /**
@@ -13,11 +14,11 @@ import java.util.List;
  */
 public interface EmployeeDao {
    
-    void add(EmployeeDaoImpl employee);
-    List<EmployeeDaoImpl> view();
-    EmployeeDaoImpl getById  (int id);
-    void delete(EmployeeDaoImpl employee);
-    void edit(EmployeeDaoImpl employee);
+    void add(Employee employee);
+    List<Employee> view();
+    Employee getById  (int id);
+    void delete(Employee employee);
+    void edit(Employee employee);
     
     
     
