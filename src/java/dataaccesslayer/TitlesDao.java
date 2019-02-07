@@ -12,8 +12,7 @@ import java.util.List;
  * @author Robert
  */
 public interface TitlesDao {
-    
-    void title();
+
     void add(Titles title);
     List<Employee> view();
     Titles getById(int empNo);

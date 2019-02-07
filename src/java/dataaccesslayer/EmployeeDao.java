@@ -13,7 +13,6 @@ import java.util.List;
  */
 public interface EmployeeDao {
    
-    void employee();
     void add(Employee employee);
     List<Employee> view();
     Employee getById  (int id);

@@ -13,9 +13,7 @@ import java.util.List;
  */
 public class DeptManager implements DeptManagerDao{
 
-    @Override
-    public void Department() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    DeptManager(){
     }
 
     @Override
