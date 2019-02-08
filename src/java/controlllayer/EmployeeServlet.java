@@ -12,6 +12,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -26,7 +27,15 @@ import javax.servlet.http.HttpServletResponse;
 public class EmployeeServlet extends HttpServlet {
 
     EmployeeService employeeService = new EmployeeService();
-    
+    Employee employee;
+    List<Employee> employees;
+    int empNo = -1;
+    Date birthDate = null;
+    Date hireDate = null;
+    String firstName = "";
+    String lastName = "";
+    String gender = "";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,90 +51,93 @@ public class EmployeeServlet extends HttpServlet {
         Employee employee = null;
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
-        
-        
-//        Example:
-        
-        int empNo = -1;
-        Date birthDate = null, hireDate = null;
-        String firstName = "", lastName = "", gender = "";
- 
-        switch(request.getParameter("method")){
-        case "add":
-            
-            empNo = Integer.parseInt(request.getParameter("empNo"));
-            try{
-                
-            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
-            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
-            }catch(ParseException parseException){
-                parseException.printStackTrace();
+        String method = request.getParameter("method");
+        if (method != null) {
+
+            switch (method) {
+                case "add":
+                    add(request, response);
+                    break;
+                case "view": // might be able to remove this one
+                    view(request, response);
+                    break;
+                case "getById":
+                    getById(request, response);
+                    break;
+                case "edit":
+                    edit(request, response);
+                case "delete":
+                    delete(request, response);
+                case "search":
+                    search(request, response);
+                default:
+                    view(request, response);
+                    break;
             }
-            
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            gender = request.getParameter("gender");
-            
-            
-            
-            if(empNo > 0 ){
-                employee = new Employee.Builder(empNo, 
-                                                    birthDate, 
-                                                    firstName, 
-                                                    lastName, 
-                                                    gender, 
-                                                    hireDate).build();
-            }
-            
-            boolean success = employeeService.add(employee);
-           
-            if(success){
-                // display success page
-            }else{
-                //display error
-            }
-            
-        
-        
-        ;
-//            .... fill in all the fields this way then...
-            
-//            employeeService.add(employee);
-        case "view":
-//            employeeService.view();
-        case "getById":
-            
-            
-            empNo = Integer.parseInt(request.getParameter("empNo"));
-//            try{
-                
-//            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
-//            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
-//            }catch(ParseException parseException){
-//                parseException.printStackTrace();
-//            }
-            
-//            firstName = request.getParameter("firstName");
-//            lastName = request.getParameter("lastName");
-//            gender = request.getParameter("gender");
-//            
-            
-            
-            if(empNo > 0 ){
-                
-                employee = employeeService.getById(empNo);
-//                employee = new Employee.Builder(empNo, 
-//                                                    birthDate, 
-//                                                    firstName, 
-//                                                    lastName, 
-//                                                    gender, 
-//                                                    hireDate).build();
-            }
-            request.setAttribute("employee",employee);
-            request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
+        } else {
+            view(request, response);
         }
     }
-//test comment
+
+    private void add(HttpServletRequest request, HttpServletResponse response) {
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+        try {
+            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
+            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+
+        firstName = request.getParameter("firstName");
+        lastName = request.getParameter("lastName");
+        gender = request.getParameter("gender");
+
+        if (empNo > 0) {
+            employee = new Employee.Builder(empNo,
+                    birthDate,
+                    firstName,
+                    lastName,
+                    gender,
+                    hireDate).build();
+        }
+
+        boolean success = employeeService.add(employee);
+
+        if (success) {
+            // display success page
+        } else {
+            //display error
+        }
+    }
+
+    private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        employees = employeeService.view();
+        request.setAttribute("employees", employees);
+        request.getRequestDispatcher("employee.jsp").forward(request, response);
+    }
+
+    private void getById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+        if (empNo > 0) {
+
+            employee = employeeService.getById(empNo);
+        }
+        request.setAttribute("employee", employee);
+        request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -165,5 +177,4 @@ public class EmployeeServlet extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    }
-
+}

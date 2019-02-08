@@ -12,5 +12,39 @@
     </head>
     <body>
         <h1>${employee.firstName} ${employee.lastName}</h1>
+        <table border="0" cellpadding="5" width="300">
+            <tr>
+                <td>
+                    Employee Id: 
+                </td>
+                <td>
+                    ${employee.empNo}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Birth Date: 
+                </td>
+                <td>
+                    ${employee.birthDate}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Gender: 
+                </td>
+                <td>
+                    ${employee.gender}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Hire Date: 
+                </td>
+                <td>
+                    ${employee.hireDate}
+                </td>
+            </tr>
+        </table>
     </body>
 </html>

@@ -4,6 +4,7 @@
     Author     : alexr
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,11 +15,50 @@
     <body>
         <h1>Hello Employees!</h1>
         <form action ="EmployeeServlet" method ="GET">
-            <input type="text" value="getById" name="method" />
-            Employee Id: <input type="text" name ="empNo"/>
-            <br/>
+            <input type="hidden" value="getById" name="method" />
+            Search by Employee Id: <input type="text" name ="empNo"/>
             <input type ="submit" value="submit"/>
+            <hr/>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Birth Date</th>
+                        <th>Gender</th>
+                        <th>Hire Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${employees}" var="employee">
+                        <tr>
+                            <td>
+                                ${employee.empNo}
+                            </td>
+                            <td>
+                                ${employee.firstName}
+                            </td>
+                            <td>
+                                ${employee.lastName}
+                            </td>
+                            <td>
+                                ${employee.birthDate}
+                            </td>
+                            <td>
+                                ${employee.gender}
+                            </td>
+                            <td>
+                                ${employee.hireDate}
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+
         </form>
+
+
 
     </body>
 </html>
