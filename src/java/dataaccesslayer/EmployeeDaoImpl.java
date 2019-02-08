@@ -68,7 +68,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try{
             DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
-            pstmt = con.prepareStatement("select * from employee where empNo = ?");
+            pstmt = con.prepareStatement("select * from employees where empNo = ?");
             pstmt.setInt(1, id); // ToDo get the max employee number currently in the data base and set it + 1 here.
 
             rs = pstmt.executeQuery();

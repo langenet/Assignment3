@@ -8,6 +8,8 @@ package dataaccesslayer;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,7 +18,7 @@ import java.sql.SQLException;
 public class DataSource {
 
 	private Connection connection = null;
-	private String connectionString = "jdbc:mysql://localhost:3306/employee";
+	private String connectionString = "jdbc:mysql://localhost:3306/employees";
 	private String user = "scott";
 	private String password = "tiger";
 
@@ -30,6 +32,9 @@ public class DataSource {
 				System.out.println("Cannot create new connection, one exists already");
 				
 			} else {
+                            // load and register JDBC driver for MySQL
+                            Class.forName("com.mysql.jdbc.Driver"); 
+
 			connection = DriverManager.getConnection(connectionString + "?useSSL=false", user, password);
 			
 			}
@@ -39,7 +44,9 @@ public class DataSource {
 			System.out.println("Problem accessing database");
 			System.out.println(e.getMessage());
 		
-		}
+		} catch (ClassNotFoundException ex) {
+                Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);
+            }
 		return connection;
 
 	}

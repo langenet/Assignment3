@@ -113,7 +113,6 @@ public class EmployeeServlet extends HttpServlet {
             
             if(empNo > 0 ){
                 
-                EmployeeService employeeService = new EmployeeService();
                 employee = employeeService.getById(empNo);
 //                employee = new Employee.Builder(empNo, 
 //                                                    birthDate, 
@@ -123,7 +122,7 @@ public class EmployeeServlet extends HttpServlet {
 //                                                    hireDate).build();
             }
             request.setAttribute("employee",employee);
-            request.getRequestDispatcher("employeeView.jsp").forward(request, response);
+            request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
         }
     }
 
