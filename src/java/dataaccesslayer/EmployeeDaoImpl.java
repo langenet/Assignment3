@@ -19,7 +19,9 @@ import java.util.List;
  * @author Robert
  */
 public class EmployeeDaoImpl implements EmployeeDao {
-
+    
+    
+    DataSource dataSource = DataSource.getInstance();
     public EmployeeDaoImpl() {
     }
 
@@ -29,7 +31,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         PreparedStatement pstmt = null;
 
         try {
-            DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
             
             pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
@@ -80,7 +81,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         List<Employee> employees = new ArrayList<>();
 
         try {
-            DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
             pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 20");
 
@@ -140,7 +140,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
         Employee employee = null;
 
         try {
-            DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
             pstmt = con.prepareStatement("select * from employees where emp_No = ?");
             pstmt.setInt(1, id); // ToDo get the max employee number currently in the data base and set it + 1 here.

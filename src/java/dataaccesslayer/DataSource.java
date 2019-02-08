@@ -17,38 +17,46 @@ import java.util.logging.Logger;
  */
 public class DataSource {
 
-	private Connection connection = null;
-	private String connectionString = "jdbc:mysql://localhost:3306/employees";
-	private String user = "scott";
-	private String password = "tiger";
+    private Connection connection = null;
+    private String connectionString = "jdbc:mysql://localhost:3306/employees";
+    private String user = "scott";
+    private String password = "tiger";
 
-	public DataSource() {
+    private DataSource() {
 
-	}
+    }
 
-	public Connection createConnection() {
-		try {
-			if(connection != null){
-				System.out.println("Cannot create new connection, one exists already");
-				
-			} else {
-                            // load and register JDBC driver for MySQL
-                            Class.forName("com.mysql.jdbc.Driver"); 
+    private static class InnerDataSource {
 
-			connection = DriverManager.getConnection(connectionString + "?useSSL=false", user, password);
-			
-			}
-			
+        private static final DataSource INSTANCE
+                = new DataSource();
+    }
 
-		} catch (SQLException e) {
-			System.out.println("Problem accessing database");
-			System.out.println(e.getMessage());
-		
-		} catch (ClassNotFoundException ex) {
-                Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);
+    public static DataSource getInstance() {
+        return InnerDataSource.INSTANCE;
+    }
+
+    public Connection createConnection() {
+        try {
+            if (connection != null) {
+                System.out.println("Cannot create new connection, one exists already");
+
+            } else {
+                // load and register JDBC driver for MySQL
+                Class.forName("com.mysql.jdbc.Driver");
+
+                connection = DriverManager.getConnection(connectionString + "?useSSL=false", user, password);
+
             }
-		return connection;
 
-	}
+        } catch (SQLException e) {
+            System.out.println("Problem accessing database");
+            System.out.println(e.getMessage());
+
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DataSource.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return connection;
+
+    }
 }
-
