@@ -2,7 +2,7 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     
     <welcome-file-list>
-        <welcome-file>employee.jsp</welcome-file>
+        <welcome-file>/employee.jsp</welcome-file>
     </welcome-file-list>
     
     <servlet>
@@ -20,7 +20,6 @@
     <servlet>
         <servlet-name>DepartmentEmployeeServlet</servlet-name>
         <servlet-class>controlllayer.DepartmentEmployeeServlet</servlet-class>
-        <jsp-file></jsp-file><!-- Add jsp files to each servlet-->
     </servlet>
     <servlet>
         <servlet-name>TitleServlet</servlet-name>
