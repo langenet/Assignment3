@@ -27,11 +27,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public boolean add(Employee employee) {
-        Connection con = null;
+//        Connection con = null;
         PreparedStatement pstmt = null;
 
-        try {
-            con = dataSource.createConnection();
+        try (Connection con = dataSource.createConnection()){
             
             pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
             ResultSet rs = pstmt.executeQuery();
@@ -61,8 +60,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 System.err.println(e.getMessage());
             }
             try {
-                if (con != null) {
-                    con.close();
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
                 }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
@@ -74,14 +73,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
  
     @Override
     public List<Employee> view() {
-        Connection con = null;
+//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Employee employee = null;
         List<Employee> employees = new ArrayList<>();
 
-        try {
-            con = dataSource.createConnection();
+        try (Connection con = dataSource.createConnection()){
+            
             pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 20");
 
             rs = pstmt.executeQuery();
@@ -121,8 +120,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 System.err.println(e.getMessage());
             }
             try {
-                if (con != null) {
-                    con.close();
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
                 }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
@@ -134,13 +133,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
     @Override
     public Employee getById(int id) {
-        Connection con = null;
+//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Employee employee = null;
 
-        try {
-            con = dataSource.createConnection();
+        try (Connection con = dataSource.createConnection()){
             pstmt = con.prepareStatement("select * from employees where emp_No = ?");
             pstmt.setInt(1, id); // ToDo get the max employee number currently in the data base and set it + 1 here.
 
@@ -181,8 +179,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 System.err.println(e.getMessage());
             }
             try {
-                if (con != null) {
-                    con.close();
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
                 }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());

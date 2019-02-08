@@ -38,7 +38,13 @@ public class DataSource {
 
     public Connection createConnection() {
         try {
-            if (connection != null) {
+            
+            /* 
+            Source: https://stackoverflow.com/questions/17278060/database-connection-not-closing
+            Author: My-Name-Is
+            date: 2013-06-24
+            */
+            if (connection != null && !connection.isClosed()) {
                 System.out.println("Cannot create new connection, one exists already");
 
             } else {
@@ -58,5 +64,13 @@ public class DataSource {
         }
         return connection;
 
+    }
+    
+    public Connection getConnection(){
+        return connection;
+    }
+    
+    public void closeConnection() throws SQLException{
+        this.connection.close();
     }
 }

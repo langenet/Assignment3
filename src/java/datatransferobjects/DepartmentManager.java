@@ -11,7 +11,7 @@ import java.sql.Date;
  *
  * @author Robert
  */
-public class DepartmentManager {
+public class DepartmentManager implements DTO{
     private int empNo;
     private String deptNo;
     private Date fromDate;

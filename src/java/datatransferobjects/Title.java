@@ -9,6 +9,6 @@ package datatransferobjects;
  *
  * @author Robert
  */
-public class Title {
+public class Title implements DTO{
     
 }

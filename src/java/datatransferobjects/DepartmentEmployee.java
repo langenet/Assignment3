@@ -9,6 +9,6 @@ package datatransferobjects;
  *
  * @author alexr
  */
-public class DepartmentEmployee {
-    
+public class DepartmentEmployee implements DTO{
+
 }

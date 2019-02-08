@@ -9,6 +9,6 @@ package datatransferobjects;
  *
  * @author alexr
  */
-public class Salary implements DTO{
+public interface DTO {
     
 }

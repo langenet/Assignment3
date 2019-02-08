@@ -9,6 +9,23 @@ package datatransferobjects;
  *
  * @author alexr
  */
-public class Department {
-    
+public class Department implements DTO{
+    private String deptNo;
+    private String deptName;
+
+    public String getDeptNo() {
+        return deptNo;
+    }
+
+    public void setDeptNo(String deptNo) {
+        this.deptNo = deptNo;
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
+    }
 }
