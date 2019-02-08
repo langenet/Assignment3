@@ -47,7 +47,11 @@
                         Gender: 
                     </td>
                     <td>
-                        <input type="text" name="gender"/>
+                        <select name="gender">
+                            
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
