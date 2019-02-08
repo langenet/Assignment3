@@ -12,8 +12,9 @@
         <title>Employee Page</title>
     </head>
     <body>
-                <h1>Hello Employees!</h1>
-        <form action ="employee.jsp" method ="GET">
+        <h1>Hello Employees!</h1>
+        <form action ="EmployeeServlet" method ="GET">
+            <input type="text" value="getById" name="method" />
             Employee Id: <input type="text" name ="empNo"/>
             <br/>
             <input type ="submit" value="submit"/>

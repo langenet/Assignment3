@@ -119,6 +119,8 @@ public class EmployeeServlet extends HttpServlet {
                                                     gender, 
                                                     hireDate).build();
             }
+            request.setAttribute("employee",employee);
+            request.getRequestDispatcher("employeeView.jsp").forward(request, response);
         }
     }
 
@@ -134,7 +136,7 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        doPost(request, response);
     }
 
     /**
