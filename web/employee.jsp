@@ -14,11 +14,14 @@
     </head>
     <body>
         <h1>Hello Employees!</h1>
-        <form action ="EmployeeServlet" method ="GET">
+        <form action ="EmployeeServlet" method ="POST">
             <input type="hidden" value="getById" name="method" />
             Search by Employee Id: <input type="text" name ="empNo"/>
             <input type ="submit" value="submit"/>
             <hr/>
+            <a href="${pageContext.request.contextPath}/addEmployee.jsp">
+                Add Employee
+            </a>
             <table border="1">
                 <thead>
                     <tr>
@@ -34,7 +37,7 @@
                     <c:forEach items="${employees}" var="employee">
                         <tr>
                             <td>
-                                <a href="/Java8288-Assignment3/EmployeeServlet?empNo=${employee.empNo}&method=getById">
+                                <a href="${pageContext.request.contextPath}/EmployeeServlet?empNo=${employee.empNo}&method=getById">
                                     ${employee.empNo}
                                 </a>
                             </td>

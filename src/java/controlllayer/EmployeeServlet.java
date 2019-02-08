@@ -79,8 +79,7 @@ public class EmployeeServlet extends HttpServlet {
         }
     }
 
-    private void add(HttpServletRequest request, HttpServletResponse response) {
-        empNo = Integer.parseInt(request.getParameter("empNo"));
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
         try {
             birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
             hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
@@ -92,21 +91,19 @@ public class EmployeeServlet extends HttpServlet {
         lastName = request.getParameter("lastName");
         gender = request.getParameter("gender");
 
-        if (empNo > 0) {
-            employee = new Employee.Builder(empNo,
-                    birthDate,
-                    firstName,
-                    lastName,
-                    gender,
-                    hireDate).build();
-        }
+        employee = new Employee.Builder(empNo,
+                birthDate,
+                firstName,
+                lastName,
+                gender,
+                hireDate).build();
 
         boolean success = employeeService.add(employee);
 
         if (success) {
-            // display success page
+            view(request, response);
         } else {
-            //display error
+            request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
 

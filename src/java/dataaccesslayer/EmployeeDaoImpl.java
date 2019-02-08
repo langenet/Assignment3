@@ -31,18 +31,26 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try {
             DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
-            pstmt = con.prepareStatement("INSERT into employee (emp_no, birth_date, first_name, last_name, gender, hire_date) "
-                    + " Values(?, ?, ?, ?, ?, ?");
-            pstmt.setInt(1, 0); // ToDo get the max employee number currently in the data base and set it + 1 here.
-            pstmt.setDate(2, new java.sql.Date(employee.getBirthDate().getTime()));
-            pstmt.setString(3, employee.getFirstName());
-            pstmt.setString(4, employee.getLastName());
-            pstmt.setString(5, employee.getGender());
-            pstmt.setDate(6, new java.sql.Date(employee.getHireDate().getTime()));
-            pstmt.executeUpdate();
+            
+            pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
+            ResultSet rs = pstmt.executeQuery();
+            pstmt = con.prepareStatement("INSERT into employees (emp_no, birth_date, first_name, last_name, gender, hire_date) "
+                    + " Values(?, ?, ?, ?, ?, ?)");
+            if(rs.next()){
+                pstmt.setInt(1, rs.getInt("emp_no"));
+                pstmt.setDate(2, new java.sql.Date(employee.getBirthDate().getTime()));
+                pstmt.setString(3, employee.getFirstName());
+                pstmt.setString(4, employee.getLastName());
+                pstmt.setString(5, employee.getGender());
+                pstmt.setDate(6, new java.sql.Date(employee.getHireDate().getTime()));
+                pstmt.executeUpdate();
+            }else{
+                return false;
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         } finally {
             try {
                 if (pstmt != null) {
@@ -62,7 +70,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         return true;
     }
-
+ 
     @Override
     public List<Employee> view() {
         Connection con = null;
@@ -74,7 +82,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         try {
             DataSource dataSource = new DataSource();
             con = dataSource.createConnection();
-            pstmt = con.prepareStatement("select * from employees limit 20 offset 20");
+            pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 20");
 
             rs = pstmt.executeQuery();
             int empNo = -1;
