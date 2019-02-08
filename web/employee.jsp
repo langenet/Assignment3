@@ -34,7 +34,9 @@
                     <c:forEach items="${employees}" var="employee">
                         <tr>
                             <td>
-                                ${employee.empNo}
+                                <a href="/Java8288-Assignment3/EmployeeServlet?empNo=${employee.empNo}&method=getById">
+                                    ${employee.empNo}
+                                </a>
                             </td>
                             <td>
                                 ${employee.firstName}
