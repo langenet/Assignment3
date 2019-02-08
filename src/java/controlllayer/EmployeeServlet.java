@@ -97,27 +97,30 @@ public class EmployeeServlet extends HttpServlet {
             
             
             empNo = Integer.parseInt(request.getParameter("empNo"));
-            try{
+//            try{
                 
-            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
-            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
-            }catch(ParseException parseException){
-                parseException.printStackTrace();
-            }
+//            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
+//            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+//            }catch(ParseException parseException){
+//                parseException.printStackTrace();
+//            }
             
-            firstName = request.getParameter("firstName");
-            lastName = request.getParameter("lastName");
-            gender = request.getParameter("gender");
-            
+//            firstName = request.getParameter("firstName");
+//            lastName = request.getParameter("lastName");
+//            gender = request.getParameter("gender");
+//            
             
             
             if(empNo > 0 ){
-                employee = new Employee.Builder(empNo, 
-                                                    birthDate, 
-                                                    firstName, 
-                                                    lastName, 
-                                                    gender, 
-                                                    hireDate).build();
+                
+                EmployeeService employeeService = new EmployeeService();
+                employee = employeeService.getById(empNo);
+//                employee = new Employee.Builder(empNo, 
+//                                                    birthDate, 
+//                                                    firstName, 
+//                                                    lastName, 
+//                                                    gender, 
+//                                                    hireDate).build();
             }
             request.setAttribute("employee",employee);
             request.getRequestDispatcher("employeeView.jsp").forward(request, response);

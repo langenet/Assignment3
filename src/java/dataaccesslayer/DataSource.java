@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DataSource {
 
 	private Connection connection = null;
-	private String connectionString = "jdbc:mysql://localhost:3306/taskdb";
+	private String connectionString = "jdbc:mysql://localhost:3306/employee";
 	private String user = "scott";
 	private String password = "tiger";
 
