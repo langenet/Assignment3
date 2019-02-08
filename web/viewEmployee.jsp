@@ -11,8 +11,29 @@
         <title>View Employee Record</title>
     </head>
     <body>
-        <h1>${employee.firstName} ${employee.lastName}</h1>
+        <h1>Employee Information</h1>
+
+        <a href="${pageContext.request.contextPath}/EmployeeServlet?method=edit&empNo=${employee.empNo}">
+            Edit Employee
+        </a>
+        <br/>
         <table border="0" cellpadding="5" width="300">
+            <tr>
+                <td>
+                    First Name: 
+                </td>
+                <td>
+                    ${employee.firstName}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Last Name: 
+                </td>
+                <td>
+                    ${employee.lastName}
+                </td>
+            </tr>
             <tr>
                 <td>
                     Employee Id: 

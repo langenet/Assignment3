@@ -11,9 +11,11 @@ import java.util.List;
  *
  * @author Robert
  */
-public class DeptManagerDaoImpl implements DeptManagerDao{
+public class DeptManagerDaoImpl implements DeptManagerDao {
 
-    DeptManagerDaoImpl(){
+    DataSource dataSource = DataSource.getInstance();
+
+    DeptManagerDaoImpl() {
     }
 
     @Override
@@ -40,5 +42,5 @@ public class DeptManagerDaoImpl implements DeptManagerDao{
     public void edit(DeptManagerDaoImpl deptManager) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

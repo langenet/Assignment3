@@ -9,9 +9,62 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Edit Employee</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+      <h1>Edit Employee</h1>
+
+        <form action ="EmployeeServlet" method ="POST">
+            <input type="hidden" value="update" name="method" />
+            <input type="hidden" value="${employee.empNo}" name="empNo" />
+            <hr/>
+            <table border="0" cellpadding="5" width="300">
+                <tr>
+                    <td>
+                        First Name: 
+                    </td>
+                    <td>
+                        <input type="text" value="${employee.firstName}" name="firstName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Last Name: 
+                    </td>
+                    <td>
+                        <input type="text"  value="${employee.lastName}" name="lastName"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Birth Date: 
+                    </td>
+                    <td>
+                        <input type="text"  value="${employee.birthDate}" name="birthDate"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Gender: 
+                    </td>
+                    <td>
+                        <select name="gender" value="$(employee.gender}">
+                            
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Hire Date: 
+                    </td>
+                    <td>
+                        <input type="text"  value="${employee.hireDate}" name="hireDate"/>
+                    </td>
+                </tr>
+            </table>
+            <input type ="submit" value="Update Employee"/>
+
     </body>
 </html>

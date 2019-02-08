@@ -5,7 +5,7 @@
  */
 package datatransferobjects;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  *
@@ -17,6 +17,55 @@ public class DepartmentManager implements DTO{
     private Date fromDate;
     private Date toDate;
 
+    private DepartmentManager(Builder builder) {
+
+        this.empNo = builder.empNo;
+        this.deptNo = builder.deptNo;
+        this.fromDate = builder.fromDate;
+        this.toDate = builder.toDate;
+    }
+
+    public static class Builder {
+
+        private int empNo;
+        private String deptNo;
+        private java.util.Date fromDate;
+        private java.util.Date toDate;
+
+        public Builder(int empNo,
+                String deptNo,
+                java.util.Date fromDate,
+                java.util.Date toDate) {
+
+            this.empNo = empNo;
+            this.deptNo = deptNo;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+        }
+
+        public Builder setDeptNo(String deptNo) {
+            this.deptNo = deptNo;
+            return this;
+
+        }
+
+        public Builder setFromDate(java.util.Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+
+        }
+
+        public Builder setToDate(java.util.Date toDate) {
+            this.toDate = toDate;
+            return this;
+
+        }
+    }
     public int getEmpNo() {
         return empNo;
     }

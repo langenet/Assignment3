@@ -13,14 +13,17 @@ import java.util.List;
  * @author Robert
  */
 public interface EmployeeDao {
-   
+
     boolean add(Employee employee);
+
+    boolean update(Employee employee);
+
     List<Employee> view();
-    Employee getById  (int id);
+
+    Employee getById(int id);
+
     void delete(Employee employee);
+
     void edit(Employee employee);
-    
-    
-    
-    
+
 }

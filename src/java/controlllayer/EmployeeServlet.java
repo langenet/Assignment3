@@ -29,6 +29,7 @@ public class EmployeeServlet extends HttpServlet {
     EmployeeService employeeService = new EmployeeService();
     Employee employee;
     List<Employee> employees;
+    String method = null;
     int empNo = -1;
     Date birthDate = null;
     Date hireDate = null;
@@ -51,11 +52,12 @@ public class EmployeeServlet extends HttpServlet {
         Employee employee = null;
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
-        String method = request.getParameter("method");
+        method = request.getParameter("method");
         if (method != null) {
 
             switch (method) {
                 case "add":
+                case "update":
                     add(request, response);
                     break;
                 case "view": // might be able to remove this one
@@ -66,10 +68,13 @@ public class EmployeeServlet extends HttpServlet {
                     break;
                 case "edit":
                     edit(request, response);
+                    break;
                 case "delete":
                     delete(request, response);
+                    break;
                 case "search":
                     search(request, response);
+                    break;
                 default:
                     view(request, response);
                     break;
@@ -79,7 +84,7 @@ public class EmployeeServlet extends HttpServlet {
         }
     }
 
-    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
             birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
             hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
@@ -91,15 +96,24 @@ public class EmployeeServlet extends HttpServlet {
         lastName = request.getParameter("lastName");
         gender = request.getParameter("gender");
 
+        if (method.equals("update")) {
+            empNo = Integer.parseInt(request.getParameter("empNo"));
+        }
+
         employee = new Employee.Builder(empNo,
                 birthDate,
                 firstName,
                 lastName,
                 gender,
                 hireDate).build();
+        
+        boolean success;
+        if (method.equals("add")) {
 
-        boolean success = employeeService.add(employee);
-
+            success = employeeService.add(employee);
+        }else{
+            success = employeeService.update(employee);
+        }
         if (success) {
             view(request, response);
         } else {
@@ -124,7 +138,12 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+        if (empNo > 0) {
+            employee = employeeService.getById(empNo);
+        }
+        request.setAttribute("employee", employee);
+        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

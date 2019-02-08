@@ -5,10 +5,98 @@
  */
 package datatransferobjects;
 
+import java.util.Date;
+
 /**
  *
  * @author alexr
  */
-public class Salary implements DTO{
-    
+public class Salary implements DTO {
+
+    private int empNo;
+    private double salary;
+    private Date fromDate;
+    private Date toDate;
+
+    private Salary(Builder builder) {
+
+        this.empNo = builder.empNo;
+        this.salary = builder.salary;
+        this.fromDate = builder.fromDate;
+        this.toDate = builder.toDate;
+    }
+
+    public static class Builder {
+
+        private int empNo;
+        private double salary;
+        private Date fromDate;
+        private Date toDate;
+
+        public Builder(int empNo,
+                double salary,
+                Date fromDate,
+                Date toDate) {
+
+            this.empNo = empNo;
+            this.salary = salary;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+        }
+
+        public Builder setSalary(int salary) {
+            this.salary = salary;
+            return this;
+
+        }
+
+        public Builder setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+
+        }
+
+        public Builder setToDate(Date toDate) {
+            this.toDate = toDate;
+            return this;
+
+        }
+    }
+
+    public int getEmpNo() {
+        return empNo;
+    }
+
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public Date getFromDate() {
+        return fromDate;
+    }
+
+    public void setFromDate(Date fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
+    }
 }

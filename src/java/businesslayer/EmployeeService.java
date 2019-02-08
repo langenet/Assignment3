@@ -14,10 +14,15 @@ import java.util.List;
  * @author alexr
  */
 public class EmployeeService {
+
     private EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
-    
-    public boolean add(Employee employee){
-        return employeeDaoImpl.add(employee);  
+
+    public boolean add(Employee employee) {
+        return employeeDaoImpl.add(employee);
+    }
+
+    public boolean update(Employee employee) {
+        return employeeDaoImpl.update(employee);
     }
 
     public List<Employee> view() {
@@ -36,4 +41,3 @@ public class EmployeeService {
         employeeDaoImpl.edit(employee);
     }
 }
-

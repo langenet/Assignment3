@@ -10,5 +10,5 @@ package dataaccesslayer;
  * @author alexr
  */
 public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao{
-    
+     DataSource dataSource = DataSource.getInstance();
 }

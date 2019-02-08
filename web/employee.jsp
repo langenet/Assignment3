@@ -22,6 +22,7 @@
             <a href="${pageContext.request.contextPath}/addEmployee.jsp">
                 Add Employee
             </a>
+            <br/>
             <table border="1">
                 <thead>
                     <tr>

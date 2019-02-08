@@ -11,9 +11,11 @@ import java.util.List;
  *
  * @author Robert
  */
-public class TitlesDaoImpl implements TitlesDao{
+public class TitlesDaoImpl implements TitlesDao {
 
-    TitlesDaoImpl(){
+    DataSource dataSource = DataSource.getInstance();
+
+    TitlesDaoImpl() {
     }
 
     @Override
@@ -40,5 +42,5 @@ public class TitlesDaoImpl implements TitlesDao{
     public void edit(EmployeeDaoImpl employee) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }
