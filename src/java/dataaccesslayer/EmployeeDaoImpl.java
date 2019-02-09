@@ -120,7 +120,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 20");
+            pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 200");
 
             rs = pstmt.executeQuery();
             int empNo = -1;

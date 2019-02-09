@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Employee</title>
     </head>
+    
     <body>
         <h1>Add Employee</h1>
 
@@ -23,7 +24,7 @@
                         First Name: 
                     </td>
                     <td>
-                        <input type="text" name="firstName"/>
+                        <input type="text" name="firstName" required/>
                     </td>
                 </tr>
                 <tr>
@@ -31,7 +32,7 @@
                         Last Name: 
                     </td>
                     <td>
-                        <input type="text" name="lastName"/>
+                        <input type="text" name="lastName" required/>
                     </td>
                 </tr>
                 <tr>
@@ -39,7 +40,9 @@
                         Birth Date: 
                     </td>
                     <td>
-                        <input type="text" name="birthDate"/>
+                        <input type="text" name="birthDate" id="birthDate" required 
+                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />
+                               
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +62,8 @@
                         Hire Date: 
                     </td>
                     <td>
-                        <input type="text" name="hireDate"/>
+                        <input type="text" name="hireDate" required 
+                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />
                     </td>
                 </tr>
             </table>
