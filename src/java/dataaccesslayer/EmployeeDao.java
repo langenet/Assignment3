@@ -22,7 +22,7 @@ public interface EmployeeDao {
 
     Employee getById(int id);
 
-    void delete(Employee employee);
+    boolean delete(int empNo);
 
     void edit(Employee employee);
 
