@@ -46,7 +46,7 @@ public class Department implements DTO {
             this.deptName = deptName;
             return this;
         }
-
+        
     }
 
     public String getDeptNo() {

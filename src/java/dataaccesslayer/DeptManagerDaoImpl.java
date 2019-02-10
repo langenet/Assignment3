@@ -5,6 +5,14 @@
  */
 package dataaccesslayer;
 
+import datatransferobjects.DepartmentManager;
+import datatransferobjects.Employee;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,4 +22,61 @@ import java.util.List;
 public class DeptManagerDaoImpl implements DeptManagerDao {
 
     DataSource dataSource = DataSource.getInstance();
+
+    public DeptManagerDaoImpl() {
+    }
+
+    @Override
+    public List<DepartmentManager> view() {
+//        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        DepartmentManager departmentManager = null;
+        List<DepartmentManager> departmentManagers = new ArrayList<>();
+
+        try (Connection con = dataSource.createConnection()) {
+
+            pstmt = con.prepareStatement("select * from dept_manager order by emp_no desc limit 20");
+
+            rs = pstmt.executeQuery();
+            int empNo = -1;
+            String deptNo = "";
+            Date fromDate = null;
+            Date toDate = null;
+
+            while (rs.next()) {
+                empNo = rs.getInt("emp_no");
+                deptNo = rs.getString("dept_no");
+                fromDate = rs.getDate("from_date");
+                toDate = rs.getDate("to_date");
+                if (empNo > 0) {
+                    departmentManager = new DepartmentManager.Builder(empNo,
+                            deptNo,
+                            fromDate,
+                            toDate).build();
+                }
+                departmentManagers.add(departmentManager);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return departmentManagers;
+    }
 }

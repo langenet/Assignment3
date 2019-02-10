@@ -11,7 +11,8 @@ import java.util.Date;
  *
  * @author Robert
  */
-public class DepartmentManager implements DTO{
+public class DepartmentManager implements DTO {
+
     private int empNo;
     private String deptNo;
     private Date fromDate;
@@ -43,6 +44,10 @@ public class DepartmentManager implements DTO{
             this.toDate = toDate;
         }
 
+        public DepartmentManager build() {
+            return new DepartmentManager(this);
+        }
+
         public Builder setEmpNo(int empNo) {
             this.empNo = empNo;
             return this;
@@ -66,6 +71,7 @@ public class DepartmentManager implements DTO{
 
         }
     }
+
     public int getEmpNo() {
         return empNo;
     }

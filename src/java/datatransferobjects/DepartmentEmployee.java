@@ -44,6 +44,10 @@ public class DepartmentEmployee implements DTO {
             this.toDate = toDate;
         }
 
+        public DepartmentEmployee build() {
+            return new DepartmentEmployee(this);
+        }
+
         public Builder setEmpNo(int empNo) {
             this.empNo = empNo;
             return this;

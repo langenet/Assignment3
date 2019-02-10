@@ -44,6 +44,10 @@ public class Salary implements DTO {
             this.toDate = toDate;
         }
 
+        public Salary build() {
+            return new Salary(this);
+        }
+
         public Builder setEmpNo(int empNo) {
             this.empNo = empNo;
             return this;

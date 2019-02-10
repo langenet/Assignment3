@@ -5,10 +5,23 @@
  */
 package businesslayer;
 
+import dataaccesslayer.DeptManagerDao;
+import dataaccesslayer.DeptManagerDaoImpl;
+import dataaccesslayer.EmployeeDaoImpl;
+import datatransferobjects.DepartmentManager;
+import datatransferobjects.Employee;
+import java.util.List;
+
 /**
  *
  * @author alexr
  */
 public class DepartmentManagerService {
-    
+    private DeptManagerDao deptManagerDaoImpl = new DeptManagerDaoImpl();
+
+
+    public List<DepartmentManager> view() {
+        return deptManagerDaoImpl.view();
+    }
+
 }

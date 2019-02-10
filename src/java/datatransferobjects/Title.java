@@ -44,6 +44,10 @@ public class Title implements DTO {
             this.toDate = toDate;
         }
 
+        public Title build() {
+            return new Title(this);
+        }
+
         public Builder setEmpNo(int empNo) {
             this.empNo = empNo;
             return this;
