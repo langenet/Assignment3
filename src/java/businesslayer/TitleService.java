@@ -5,10 +5,21 @@
  */
 package businesslayer;
 
+import dataaccesslayer.TitlesDao;
+import dataaccesslayer.TitlesDaoImpl;
+import datatransferobjects.Title;
+import java.util.List;
+
 /**
  *
  * @author alexr
  */
 public class TitleService {
-    
+            private TitlesDao titleDaoImpl = new TitlesDaoImpl();
+
+
+    public List<Title> view() {
+        return titleDaoImpl.view();
+    }
+
 }

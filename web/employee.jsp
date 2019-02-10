@@ -19,7 +19,7 @@
             Search by Employee Id: <input type="text" name ="empNo"/>
             <input type ="submit" value="submit"/>
             <hr/>
-            <a href="${pageContext.request.contextPath}/addEmployee.jsp">
+            <a href="${pageContext.request.contextPath}/EmployeeServlet?method=initAdd">
                 Add Employee
             </a>
             <br/>

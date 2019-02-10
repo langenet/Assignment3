@@ -5,16 +5,15 @@
  */
 package controlllayer;
 
+import businesslayer.DepartmentService;
 import businesslayer.EmployeeService;
+import datatransferobjects.Department;
 import datatransferobjects.Employee;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.sql.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,8 +26,12 @@ import javax.servlet.http.HttpServletResponse;
 public class EmployeeServlet extends HttpServlet {
 
     EmployeeService employeeService = new EmployeeService();
+    DepartmentService departmentService = new DepartmentService();
+
     Employee employee;
     List<Employee> employees;
+    Department department;
+    List<Department> departments;
     String method = null;
     int empNo = -1;
     Date birthDate = null;
@@ -75,6 +78,9 @@ public class EmployeeServlet extends HttpServlet {
                 case "search":
                     search(request, response);
                     break;
+                case "initAdd":
+                    initAdd(request, response);
+                    break;
                 default:
                     view(request, response);
                     break;
@@ -82,6 +88,12 @@ public class EmployeeServlet extends HttpServlet {
         } else {
             view(request, response);
         }
+    }
+
+    private void initAdd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        departments = departmentService.view();
+        request.setAttribute("departments", departments);
+        request.getRequestDispatcher("addEmployee.jsp").forward(request, response);
     }
 
     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -114,7 +126,7 @@ public class EmployeeServlet extends HttpServlet {
         } else {
             success = employeeService.update(employee);
         }
-        
+
         if (success) {
             view(request, response);
         } else {
@@ -148,22 +160,22 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       
+
         employee = new Employee.Builder(empNo,
                 birthDate,
                 firstName,
                 lastName,
                 gender,
                 hireDate).build();
- 
-        boolean success = employeeService.delete(employee);  
-             
+
+        boolean success = employeeService.delete(employee);
+
         if (success) {
             view(request, response);
         } else {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        
+
         empNo = Integer.parseInt(request.getParameter("empNo"));
         if (empNo > 0) {
             employee = employeeService.getById(empNo);
@@ -173,20 +185,20 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    employee = new Employee.Builder(empNo,
+        employee = new Employee.Builder(empNo,
                 birthDate,
                 firstName,
                 lastName,
                 gender,
                 hireDate).build();
-        boolean success = employeeService.delete(employee);  
-             
+        boolean success = employeeService.delete(employee);
+
         if (success) {
             view(request, response);
         } else {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-        
+
         empNo = Integer.parseInt(request.getParameter("empNo"));
         if (empNo > 0) {
             employee = employeeService.getById(empNo);
@@ -194,7 +206,6 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("employee", employee);
         request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
