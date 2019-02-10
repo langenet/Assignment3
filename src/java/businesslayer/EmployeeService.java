@@ -33,8 +33,8 @@ public class EmployeeService {
         return employeeDaoImpl.getById(id);
     }
 
-    public boolean delete(int empNo) {
-        return employeeDaoImpl.delete(empNo);
+    public void delete(Employee employee) {
+        employeeDaoImpl.delete(employee);
     }
 
     public void edit(Employee employee) {

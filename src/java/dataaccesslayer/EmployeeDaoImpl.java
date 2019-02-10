@@ -230,39 +230,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public boolean delete(int empNo) {
-       PreparedStatement pstmt = null;
-        ResultSet rs = null;
-        Employee employee = null;
-        boolean result = false;
-
-        try (Connection con = dataSource.createConnection()) {
-            pstmt = con.prepareStatement("delete from employees where emp_no = ?");
-            pstmt.setInt(1, empNo); // ToDo get the max employee number currently in the data base and set it + 1 here.
-
-            result = pstmt.execute();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (pstmt != null) {
-                    pstmt.close();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                return false;
-            }
-            try {
-                if (dataSource.getConnection() != null) {
-                    dataSource.closeConnection();
-                }
-            } catch (SQLException e) {
-                System.err.println(e.getMessage());
-                return false;
-            }
-        }
-        return result;
+    public void delete(Employee employee) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

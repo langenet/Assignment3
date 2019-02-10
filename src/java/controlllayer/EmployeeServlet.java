@@ -106,12 +106,12 @@ public class EmployeeServlet extends HttpServlet {
                 lastName,
                 gender,
                 hireDate).build();
-
+        
         boolean success;
         if (method.equals("add")) {
 
             success = employeeService.add(employee);
-        } else {
+        }else{
             success = employeeService.update(employee);
         }
         if (success) {
@@ -147,14 +147,7 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        empNo = Integer.parseInt(request.getParameter("empNo"));
-        if (empNo > 0) {
-            if (employeeService.delete(empNo)) {
-                view(request, response);
-            } else {
-                request.getRequestDispatcher("error.jsp").forward(request, response);
-            }
-        }
+
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -16,12 +16,6 @@
         <a href="${pageContext.request.contextPath}/EmployeeServlet?method=edit&empNo=${employee.empNo}">
             Edit Employee
         </a>
-
-        <a href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}"
-           class="confirmDelete">
-            Delete Employee
-        </a>
-
         <br/>
         <table border="0" cellpadding="5" width="300">
             <tr>
@@ -75,18 +69,3 @@
         </table>
     </body>
 </html>
-<script>
-    
-    /*
-     * source: https://stackoverflow.com/questions/10462839/how-to-display-a-confirmation-dialog-when-clicking-an-a-link
-     * author: kapa
-     * date: 2012-05-05
-     */
-    var elems = document.getElementsByClassName('confirmDelete');
-    var confirmIt = function (e) {
-        if (!confirm('Are you sure you want to delete this employee?')) e.preventDefault();
-    };
-    for (var i = 0, l = elems.length; i < l; i++) {
-        elems[i].addEventListener('click', confirmIt, false);
-    }
-</script>
