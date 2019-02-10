@@ -6,6 +6,7 @@
 package dataaccesslayer;
 
 import datatransferobjects.Title;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -14,11 +15,7 @@ import java.util.List;
  */
 public interface TitlesDao {
 
-    void add(TitlesDaoImpl title);
     List<Title> view();
-    TitlesDaoImpl getById(int empNo);
-    void delete(EmployeeDaoImpl employee);
-    void edit(EmployeeDaoImpl employee);
-    
-    
+
+    public boolean add(int empNo, String title, Date fromDate, Date toDate);
 }

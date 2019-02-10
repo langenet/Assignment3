@@ -13,6 +13,7 @@
         <title>Department Employees</title>
     </head>
     <body>
+    <center>
         <h1>Department Employees</h1>
         <form action ="DepartmentEmployeeServlet" method ="POST">
             <!--            <input type="hidden" value="getById" name="method" />
@@ -53,5 +54,6 @@
             </table>
 
         </form>
+    </center>
     </body>
 </html>

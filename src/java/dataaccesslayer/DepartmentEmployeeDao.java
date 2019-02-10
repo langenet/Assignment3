@@ -6,6 +6,7 @@
 package dataaccesslayer;
 
 import datatransferobjects.DepartmentEmployee;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ import java.util.List;
  * @author alexr
  */
 public interface DepartmentEmployeeDao {
-          List<DepartmentEmployee> view();
-
+    List<DepartmentEmployee> view();
+    
+    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate);
 }

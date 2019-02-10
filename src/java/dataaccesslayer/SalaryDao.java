@@ -6,6 +6,7 @@
 package dataaccesslayer;
 
 import datatransferobjects.Salary;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,5 +16,6 @@ import java.util.List;
 public interface SalaryDao {
 
     List<Salary> view();
-
+    
+    public boolean add(int empNo, int salary, Date fromDate, Date toDate);
 }

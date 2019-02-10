@@ -13,6 +13,7 @@
         <title>Salaries</title>
     </head>
     <body>
+    <center>
         <h1>Salaries</h1>
         <form action ="DepartmentEmployeeServlet" method ="POST">
             <!--            <input type="hidden" value="getById" name="method" />
@@ -51,6 +52,6 @@
                     </c:forEach>
                 </tbody>
             </table>
-
+    </center>
         </form>    </body>
 </html>

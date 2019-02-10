@@ -13,6 +13,7 @@
         <title>Employee Titles</title>
     </head>
     <body>
+    <center>
         <h1>Employee Titles</h1>
         <form action ="TitleServlet" method ="POST">
             <!--            <input type="hidden" value="getById" name="method" />
@@ -53,5 +54,6 @@
             </table>
 
         </form>
+    </center>
     </body>
 </html>

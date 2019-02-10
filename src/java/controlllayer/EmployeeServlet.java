@@ -51,8 +51,8 @@ public class EmployeeServlet extends HttpServlet {
     Date deptFromDate = null;
     Date deptToDate = null;
     boolean isManager = false;
-    Date managerFrom = null;
-    Date managerTo = null;
+    Date employeeTypeFrom = null;
+    Date employeeTypeTo = null;
     String title = "";
     Date titleFrom = null;
     Date titleTo = null;
@@ -122,8 +122,8 @@ public class EmployeeServlet extends HttpServlet {
             hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
             deptFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptFromDate")).getTime());
             deptToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptToDate")).getTime());
-            managerFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerFrom")).getTime());
-            managerTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerTo")).getTime());
+            employeeTypeFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerFrom")).getTime());
+            employeeTypeTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerTo")).getTime());
             titleFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleFrom")).getTime());
             titleTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleTo")).getTime());
             salaryFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryFrom")).getTime());
@@ -156,11 +156,11 @@ public class EmployeeServlet extends HttpServlet {
         boolean success;
         if (method.equals("add")) {
 
-            success = employeeService.add(employee) 
-                    && (isManager ? departmentManagerService.add(empNo, departmentNum, managerFrom, managerTo): true)
-                    && departmentEmployeeService.add()
-                    && titleService.add()
-                    && salaryService.add();
+            success = employeeService.add(employee)                    
+                    && (isManager ? departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo): true)
+                    && departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo)
+                    && titleService.add(empNo, title, titleFrom, titleTo)
+                    && salaryService.add(empNo, salary, salaryFrom, salaryTo );
             
         } else {
             success = employeeService.update(employee);

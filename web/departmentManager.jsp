@@ -13,6 +13,7 @@
         <title>Department Managers</title>
     </head>
     <body>
+    <center>
         <h1>Department Managers</h1>
         <form action ="DepartmentManagerServlet" method ="POST">
             <!--            <input type="hidden" value="getById" name="method" />
@@ -53,5 +54,6 @@
             </table>
 
         </form>
+    </center>
     </body>
 </html>

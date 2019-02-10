@@ -13,6 +13,7 @@
         <title>Department Page</title>
     </head>
     <body>
+       <center>
         <h1>Departments</h1>
         <form action ="DepartmentServlet" method ="POST">
             <input type="hidden" value="getById" name="method" />
@@ -48,5 +49,6 @@
             </table>
 
         </form>
+       <center>
     </body>
 </html>

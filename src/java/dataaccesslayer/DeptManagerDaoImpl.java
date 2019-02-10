@@ -86,7 +86,7 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
         try (Connection con = dataSource.createConnection()) {
 
  
-            pstmt = con.prepareStatement("INSERT into dept_Manager (emp_no, dept_no, from_date, to_date) "
+            pstmt = con.prepareStatement("INSERT into dept_manager (emp_no, dept_no, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
                 pstmt.setInt(1, empNo);
                 pstmt.setString(2, deptNo);

@@ -9,6 +9,7 @@ import dataaccesslayer.DepartmentEmployeeDao;
 import dataaccesslayer.DepartmentEmployeeDaoImpl;
 import dataaccesslayer.DeptManagerDaoImpl;
 import datatransferobjects.DepartmentEmployee;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,11 +17,16 @@ import java.util.List;
  * @author alexr
  */
 public class DepartmentEmployeeService {
+    
         private DepartmentEmployeeDao deptEmployeeImpl = new DepartmentEmployeeDaoImpl();
 
 
     public List<DepartmentEmployee> view() {
         return deptEmployeeImpl.view();
+    }
+    
+    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
+        return deptEmployeeImpl.add(empNo, deptNo, fromDate, toDate);
     }
 
 }

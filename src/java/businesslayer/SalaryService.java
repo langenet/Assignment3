@@ -8,6 +8,7 @@ package businesslayer;
 import dataaccesslayer.SalaryDao;
 import dataaccesslayer.SalaryDaoImpl;
 import datatransferobjects.Salary;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,5 +21,9 @@ public class SalaryService {
 
     public List<Salary> view() {
         return salaryDaoImpl.view();
+    }
+    
+    public boolean add(int empNo,int salary, Date fromDate, Date toDate) {
+        return salaryDaoImpl.add(empNo,salary, fromDate, toDate);
     }
 }

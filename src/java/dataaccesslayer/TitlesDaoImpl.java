@@ -25,10 +25,6 @@ public class TitlesDaoImpl implements TitlesDao {
     public TitlesDaoImpl() {
     }
 
-    @Override
-    public void add(TitlesDaoImpl title) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public List<Title> view() {
@@ -83,19 +79,43 @@ public class TitlesDaoImpl implements TitlesDao {
 
         return titles;
     }
-    @Override
-    public TitlesDaoImpl getById(int empNo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
-    @Override
-    public void delete(EmployeeDaoImpl employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ @Override
+ public boolean add(int empNo, String title, Date fromDate, Date toDate) {
+    PreparedStatement pstmt = null;
 
-    @Override
-    public void edit(EmployeeDaoImpl employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try (Connection con = dataSource.createConnection()) {
 
+ 
+            pstmt = con.prepareStatement("INSERT into titles emp_no, title, from_date, to_date) "
+                    + " Values(?, ?, ?, ?)");
+                pstmt.setInt(1, empNo);
+                pstmt.setString(2, title);
+                pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
+                pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
+                pstmt.executeUpdate();
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return true;
+    }
 }
