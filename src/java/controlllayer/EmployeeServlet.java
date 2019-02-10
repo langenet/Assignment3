@@ -106,12 +106,12 @@ public class EmployeeServlet extends HttpServlet {
                 lastName,
                 gender,
                 hireDate).build();
-        
+
         boolean success;
         if (method.equals("add")) {
 
             success = employeeService.add(employee);
-        }else{
+        } else {
             success = employeeService.update(employee);
         }
         
