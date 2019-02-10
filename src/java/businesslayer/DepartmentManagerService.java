@@ -7,9 +7,8 @@ package businesslayer;
 
 import dataaccesslayer.DeptManagerDao;
 import dataaccesslayer.DeptManagerDaoImpl;
-import dataaccesslayer.EmployeeDaoImpl;
 import datatransferobjects.DepartmentManager;
-import datatransferobjects.Employee;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,11 +16,15 @@ import java.util.List;
  * @author alexr
  */
 public class DepartmentManagerService {
-    private DeptManagerDao deptManagerDaoImpl = new DeptManagerDaoImpl();
 
+    private DeptManagerDao deptManagerDaoImpl = new DeptManagerDaoImpl();
 
     public List<DepartmentManager> view() {
         return deptManagerDaoImpl.view();
+    }
+
+    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
+        return deptManagerDaoImpl.add(empNo, deptNo, fromDate, toDate);
     }
 
 }

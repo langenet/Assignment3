@@ -5,8 +5,12 @@
  */
 package controlllayer;
 
+import businesslayer.DepartmentEmployeeService;
+import businesslayer.DepartmentManagerService;
 import businesslayer.DepartmentService;
 import businesslayer.EmployeeService;
+import businesslayer.SalaryService;
+import businesslayer.TitleService;
 import datatransferobjects.Department;
 import datatransferobjects.Employee;
 import java.io.IOException;
@@ -27,6 +31,10 @@ public class EmployeeServlet extends HttpServlet {
 
     EmployeeService employeeService = new EmployeeService();
     DepartmentService departmentService = new DepartmentService();
+    DepartmentManagerService departmentManagerService = new DepartmentManagerService();
+    DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
+    TitleService titleService = new TitleService();
+    SalaryService salaryService = new SalaryService();
 
     Employee employee;
     List<Employee> employees;
@@ -40,6 +48,18 @@ public class EmployeeServlet extends HttpServlet {
     String lastName = "";
     String gender = "";
     String departmentNum = "";
+    Date deptFromDate = null;
+    Date deptToDate = null;
+    boolean isManager = false;
+    Date managerFrom = null;
+    Date managerTo = null;
+    String title = "";
+    Date titleFrom = null;
+    Date titleTo = null;
+    int salary = 0;
+    Date salaryFrom = null;
+    Date salaryTo = null;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -100,6 +120,14 @@ public class EmployeeServlet extends HttpServlet {
         try {
             birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
             hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+            deptFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptFromDate")).getTime());
+            deptToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptToDate")).getTime());
+            managerFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerFrom")).getTime());
+            managerTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerTo")).getTime());
+            titleFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleFrom")).getTime());
+            titleTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleTo")).getTime());
+            salaryFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryFrom")).getTime());
+            salaryTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryTo")).getTime());
         } catch (ParseException parseException) {
             parseException.printStackTrace();
         }
@@ -107,9 +135,13 @@ public class EmployeeServlet extends HttpServlet {
         firstName = request.getParameter("firstName");
         lastName = request.getParameter("lastName");
         gender = request.getParameter("gender");
-        
-        String departmentNum = request.getParameter("department");
 
+        departmentNum = request.getParameter("department");
+        isManager = Boolean.parseBoolean(request.getParameter("isManager"));
+        title = request.getParameter("title");
+        salary = Integer.parseInt(request.getParameter("salary"));
+               
+        
         if (method.equals("update")) {
             empNo = Integer.parseInt(request.getParameter("empNo"));
         }
@@ -124,7 +156,12 @@ public class EmployeeServlet extends HttpServlet {
         boolean success;
         if (method.equals("add")) {
 
-            success = employeeService.add(employee);
+            success = employeeService.add(employee) 
+                    && (isManager ? departmentManagerService.add(empNo, departmentNum, managerFrom, managerTo): true)
+                    && departmentEmployeeService.add()
+                    && titleService.add()
+                    && salaryService.add();
+            
         } else {
             success = employeeService.update(employee);
         }

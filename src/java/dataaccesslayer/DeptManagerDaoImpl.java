@@ -79,4 +79,42 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
 
         return departmentManagers;
     }
+
+    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
+    PreparedStatement pstmt = null;
+
+        try (Connection con = dataSource.createConnection()) {
+
+ 
+            pstmt = con.prepareStatement("INSERT into dept_Manager (emp_no, dept_no, from_date, to_date) "
+                    + " Values(?, ?, ?, ?)");
+                pstmt.setInt(1, empNo);
+                pstmt.setString(2, deptNo);
+                pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
+                pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
+                pstmt.executeUpdate();
+            
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return true;
+    }
 }
