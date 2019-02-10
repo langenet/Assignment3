@@ -5,8 +5,11 @@
  */
 package controlllayer;
 
+import businesslayer.DepartmentEmployeeService;
+import datatransferobjects.DepartmentEmployee;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +20,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author alexr
  */
 public class DepartmentEmployeeServlet extends HttpServlet {
+
+    DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
+    DepartmentEmployee departmentEmployee;
+    List<DepartmentEmployee> departmentEmployees;
+
+    String method = null;
+    int empNo = -1;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,31 +40,154 @@ public class DepartmentEmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet DepartmentEmployeeServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet DepartmentEmployeeServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        // Need to figure out based on the request coming in which method
+        // needs to be invoked at the service level
+        method = request.getParameter("method");
+        if (method != null) {
+
+            switch (method) {
+                case "add":
+                case "update":
+                    add(request, response);
+                    break;
+                case "view": // might be able to remove this one
+                    view(request, response);
+                    break;
+                case "getById":
+                    getById(request, response);
+                    break;
+                case "edit":
+                    edit(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                case "search":
+                    search(request, response);
+                    break;
+                default:
+                    view(request, response);
+                    break;
+            }
+        } else {
+            view(request, response);
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        if (method.equals("update")) {
+//            empNo = Integer.parseInt(request.getParameter("empNo"));
+//        }
+//
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//
+//        boolean success;
+//        if (method.equals("add")) {
+//
+//            success = employeeService.add(employee);
+//        } else {
+//            success = employeeService.update(employee);
+//        }
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+    }
+
+    private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        departmentEmployees = departmentEmployeeService.view();
+        request.setAttribute("departmentEmployees", departmentEmployees);
+        request.getRequestDispatcher("departmentEmployee.jsp").forward(request, response);
+    }
+
+    private void getById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//
+//        boolean success = employeeService.delete(employee);
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+//
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//        boolean success = employeeService.delete(employee);
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+//
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
+
+
+// <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+/**
+ * Handles the HTTP <code>GET</code> method.
+ *
+ * @param request servlet request
+ * @param response servlet response
+ * @throws ServletException if a servlet-specific error occurs
+ * @throws IOException if an I/O error occurs
+ */
+@Override
+        protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -68,7 +201,7 @@ public class DepartmentEmployeeServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+        protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -79,7 +212,7 @@ public class DepartmentEmployeeServlet extends HttpServlet {
      * @return a String containing servlet description
      */
     @Override
-    public String getServletInfo() {
+        public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
