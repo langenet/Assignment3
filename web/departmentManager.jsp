@@ -26,7 +26,7 @@
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Department Manager Id</th>
+                        <th>Employee Id</th>
                         <th>Department No</th>
                         <th>From Date</th>
                         <th>To Date</th>

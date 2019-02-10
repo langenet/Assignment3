@@ -5,8 +5,11 @@
  */
 package controlllayer;
 
+import businesslayer.SalaryService;
+import datatransferobjects.Salary;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +20,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author alexr
  */
 public class SalaryServlet extends HttpServlet {
+ SalaryService salaryService = new SalaryService();
+    Salary salary;
+    List<Salary> salaries;
 
+    String method = null;
+    int empNo = -1;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,19 +38,140 @@ public class SalaryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SalaryServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SalaryServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+             // Need to figure out based on the request coming in which method
+        // needs to be invoked at the service level
+        method = request.getParameter("method");
+        if (method != null) {
+
+            switch (method) {
+                case "add":
+                case "update":
+                    add(request, response);
+                    break;
+                case "view": // might be able to remove this one
+                    view(request, response);
+                    break;
+                case "getById":
+                    getById(request, response);
+                    break;
+                case "edit":
+                    edit(request, response);
+                    break;
+                case "delete":
+                    delete(request, response);
+                    break;
+                case "search":
+                    search(request, response);
+                    break;
+                default:
+                    view(request, response);
+                    break;
+            }
+        } else {
+            view(request, response);
         }
     }
+     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+//        if (method.equals("update")) {
+//            empNo = Integer.parseInt(request.getParameter("empNo"));
+//        }
+//
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//
+//        boolean success;
+//        if (method.equals("add")) {
+//
+//            success = employeeService.add(employee);
+//        } else {
+//            success = employeeService.update(employee);
+//        }
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+    }
+
+    private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        salaries = salaryService.view();
+        request.setAttribute("salaries", salaries);
+        request.getRequestDispatcher("salary.jsp").forward(request, response);
+    }
+
+    private void getById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("viewEmployee.jsp").forward(request, response);
+    }
+
+    private void edit(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//
+//        boolean success = employeeService.delete(employee);
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+//
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
+    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        employee = new Employee.Builder(empNo,
+//                birthDate,
+//                firstName,
+//                lastName,
+//                gender,
+//                hireDate).build();
+//        boolean success = employeeService.delete(employee);
+//
+//        if (success) {
+//            view(request, response);
+//        } else {
+//            request.getRequestDispatcher("error.jsp").forward(request, response);
+//        }
+//
+//        empNo = Integer.parseInt(request.getParameter("empNo"));
+//        if (empNo > 0) {
+//            employee = employeeService.getById(empNo);
+//        }
+//        request.setAttribute("employee", employee);
+//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

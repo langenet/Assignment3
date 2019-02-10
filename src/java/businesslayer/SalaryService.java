@@ -5,10 +5,20 @@
  */
 package businesslayer;
 
+import dataaccesslayer.SalaryDao;
+import dataaccesslayer.SalaryDaoImpl;
+import datatransferobjects.Salary;
+import java.util.List;
+
 /**
  *
  * @author alexr
  */
 public class SalaryService {
-    
+            private SalaryDao salaryDaoImpl = new SalaryDaoImpl();
+
+
+    public List<Salary> view() {
+        return salaryDaoImpl.view();
+    }
 }

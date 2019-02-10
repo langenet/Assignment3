@@ -31,7 +31,7 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DepartmentEmployee departmentEmployee = null;
-        List<DepartmentEmployee> DepartmentEmployees = new ArrayList<>();
+        List<DepartmentEmployee> departmentEmployees = new ArrayList<>();
 
         try (Connection con = dataSource.createConnection()) {
 
@@ -54,7 +54,7 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
                             fromDate,
                             toDate).build();
                 }
-                DepartmentEmployees.add(departmentEmployee);
+                departmentEmployees.add(departmentEmployee);
             }
 
         } catch (SQLException e) {
@@ -76,6 +76,6 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
             }
         }
 
-        return DepartmentEmployees;
+        return departmentEmployees;
     }
 }

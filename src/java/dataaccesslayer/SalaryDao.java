@@ -5,10 +5,15 @@
  */
 package dataaccesslayer;
 
+import datatransferobjects.Salary;
+import java.util.List;
+
 /**
  *
  * @author alexr
  */
 public interface SalaryDao {
-    
+
+    List<Salary> view();
+
 }
