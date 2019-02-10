@@ -3,6 +3,7 @@
     Created on : Feb 9, 2019, 5:04:13 PM
     Author     : Robert
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Department Page</title>
     </head>
-      <body>
+    <body>
         <h1>Departments</h1>
         <form action ="DepartmentServlet" method ="POST">
             <input type="hidden" value="getById" name="method" />
@@ -30,21 +31,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${departments}" var="department">
-                        <tr>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
-                                    ${department.deptNo}
-                                </a>
-                            </td>
-                            <td>
-                                ${department.deptName}
-                            </td>
-                        </tr>
-                    </c:forEach>
+                <c:forEach items="${departments}" var="department">
+                    <tr>
+                        <td>
+
+                            <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
+                                ${department.deptNo}
+                            </a>
+                        </td>
+                        <td>
+                            ${department.deptName}
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
 
         </form>
-  </body>
+    </body>
 </html>
