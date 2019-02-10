@@ -5,10 +5,14 @@
  */
 package dataaccesslayer;
 
+import datatransferobjects.Department;
+import datatransferobjects.Employee;
+import java.util.List;
+
 /**
  *
  * @author alexr
  */
 public interface DepartmentDao {
-    
+      List<Department> view();
 }

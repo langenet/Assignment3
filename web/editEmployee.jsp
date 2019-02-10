@@ -40,7 +40,8 @@
                         Birth Date: 
                     </td>
                     <td>
-                        <input type="text"  value="${employee.birthDate}" name="birthDate"/>
+                        <input type="text"  value="${employee.birthDate}" name="birthDate"
+                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" /> 
                     </td>
                 </tr>
                 <tr>
@@ -60,7 +61,8 @@
                         Hire Date: 
                     </td>
                     <td>
-                        <input type="text"  value="${employee.hireDate}" name="hireDate"/>
+                        <input type="text"  value="${employee.hireDate}" name="hireDate"
+                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" /> 
                     </td>
                 </tr>
             </table>

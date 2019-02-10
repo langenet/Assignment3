@@ -17,13 +17,10 @@ public interface EmployeeDao {
     boolean add(Employee employee);
 
     boolean update(Employee employee);
+    
+    boolean delete(Employee employee);    
 
     List<Employee> view();
 
     Employee getById(int id);
-
-    void delete(Employee employee);
-
-    void edit(Employee employee);
-
 }

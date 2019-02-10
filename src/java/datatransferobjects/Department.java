@@ -26,11 +26,15 @@ public class Department implements DTO {
 
         private String deptNo;
         private String deptName;
+        public Department build;
 
         public Builder(String deptNo, String deptName) {
-
             this.deptNo = deptNo;
             this.deptName = deptName;
+        }
+        
+        public Department build(){
+            return new Department(this);
         }
 
         public Builder setDeptNo(String deptNo) {

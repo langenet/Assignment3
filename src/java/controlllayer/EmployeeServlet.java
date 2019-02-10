@@ -114,6 +114,7 @@ public class EmployeeServlet extends HttpServlet {
         }else{
             success = employeeService.update(employee);
         }
+        
         if (success) {
             view(request, response);
         } else {
@@ -147,12 +148,53 @@ public class EmployeeServlet extends HttpServlet {
     }
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+       
+        employee = new Employee.Builder(empNo,
+                birthDate,
+                firstName,
+                lastName,
+                gender,
+                hireDate).build();
+ 
+        boolean success = employeeService.delete(employee);  
+             
+        if (success) {
+            view(request, response);
+        } else {
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+        
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+        if (empNo > 0) {
+            employee = employeeService.getById(empNo);
+        }
+        request.setAttribute("employee", employee);
+        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
 
     private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    employee = new Employee.Builder(empNo,
+                birthDate,
+                firstName,
+                lastName,
+                gender,
+                hireDate).build();
+        boolean success = employeeService.delete(employee);  
+             
+        if (success) {
+            view(request, response);
+        } else {
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+        
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+        if (empNo > 0) {
+            employee = employeeService.getById(empNo);
+        }
+        request.setAttribute("employee", employee);
+        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

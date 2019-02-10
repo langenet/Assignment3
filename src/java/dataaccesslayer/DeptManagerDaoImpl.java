@@ -14,33 +14,4 @@ import java.util.List;
 public class DeptManagerDaoImpl implements DeptManagerDao {
 
     DataSource dataSource = DataSource.getInstance();
-
-    DeptManagerDaoImpl() {
-    }
-
-    @Override
-    public void addDptMgr(DeptManagerDaoImpl deptManager) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List<EmployeeDaoImpl> view() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public EmployeeDaoImpl getById(DeptManagerDaoImpl deptManager) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete(DeptManagerDaoImpl deptManager) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void edit(DeptManagerDaoImpl deptManager) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

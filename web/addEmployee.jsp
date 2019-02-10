@@ -41,8 +41,7 @@
                     </td>
                     <td>
                         <input type="text" name="birthDate" id="birthDate" required 
-                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />
-                               
+                               pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                             
                     </td>
                 </tr>
                 <tr>

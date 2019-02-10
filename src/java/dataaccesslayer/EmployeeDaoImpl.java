@@ -120,7 +120,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 200");
+            pstmt = con.prepareStatement("select * from employees order by emp_no desc limit 20");
 
             rs = pstmt.executeQuery();
             int empNo = -1;
@@ -230,13 +230,38 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public void delete(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(Employee employee) {
+     //        Connection con = null;
+        PreparedStatement pstmt = null;
+
+        try (Connection con = dataSource.createConnection()) {
+
+            pstmt = con.prepareStatement("delete from employees where emp_no = ?");
+            pstmt.setInt(1, employee.getEmpNo());
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return true;
+    
     }
 
-    @Override
-    public void edit(Employee employee) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-}
+ }

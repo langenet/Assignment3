@@ -10,17 +10,26 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Employee Record</title>
     </head>
+<style>
+p {
+  display: inline;
+}
+</style>
     <body>
         <h1>Employee Information</h1>
 
-        <a href="${pageContext.request.contextPath}/EmployeeServlet?method=edit&empNo=${employee.empNo}">
-            Edit Employee
-        </a>
+        <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=edit&empNo=${employee.empNo}">
+                Edit Employee</a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p>
+        
+          
+                <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}">
+                        Delete Employee</a></p>
+        
         <br/>
         <table border="0" cellpadding="5" width="300">
             <tr>
                 <td>
-                    First Name: 
+                    First Name:
                 </td>
                 <td>
                     ${employee.firstName}
@@ -28,7 +37,7 @@
             </tr>
             <tr>
                 <td>
-                    Last Name: 
+                    Last Name:
                 </td>
                 <td>
                     ${employee.lastName}
@@ -36,7 +45,7 @@
             </tr>
             <tr>
                 <td>
-                    Employee Id: 
+                    Employee Id:
                 </td>
                 <td>
                     ${employee.empNo}
@@ -44,7 +53,7 @@
             </tr>
             <tr>
                 <td>
-                    Birth Date: 
+                    Birth Date:
                 </td>
                 <td>
                     ${employee.birthDate}
@@ -52,7 +61,7 @@
             </tr>
             <tr>
                 <td>
-                    Gender: 
+                    Gender:
                 </td>
                 <td>
                     ${employee.gender}
@@ -60,7 +69,7 @@
             </tr>
             <tr>
                 <td>
-                    Hire Date: 
+                    Hire Date:
                 </td>
                 <td>
                     ${employee.hireDate}

@@ -5,6 +5,7 @@
  */
 package dataaccesslayer;
 
+import datatransferobjects.Department;
 import java.util.List;
 
 /**
@@ -12,11 +13,6 @@ import java.util.List;
  * @author Robert
  */
 public interface DeptManagerDao {
-    
-    void addDptMgr(DeptManagerDaoImpl deptManager);
-    List<EmployeeDaoImpl> view();
-    EmployeeDaoImpl getById(DeptManagerDaoImpl deptManager);
-    void delete(DeptManagerDaoImpl deptManager);
-    void edit(DeptManagerDaoImpl deptManager);
+
     
 }
