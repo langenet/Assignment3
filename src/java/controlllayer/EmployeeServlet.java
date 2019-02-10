@@ -40,7 +40,6 @@ public class EmployeeServlet extends HttpServlet {
     String lastName = "";
     String gender = "";
     String departmentNum = "";
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -109,7 +108,7 @@ public class EmployeeServlet extends HttpServlet {
         lastName = request.getParameter("lastName");
         gender = request.getParameter("gender");
         
-        departmentNum = request.getParameter("department");
+        String departmentNum = request.getParameter("department");
 
         if (method.equals("update")) {
             empNo = Integer.parseInt(request.getParameter("empNo"));
@@ -120,8 +119,7 @@ public class EmployeeServlet extends HttpServlet {
                 firstName,
                 lastName,
                 gender,
-                hireDate,
-                departmentNum).build();
+                hireDate).build();
 
         boolean success;
         if (method.equals("add")) {
@@ -170,8 +168,7 @@ public class EmployeeServlet extends HttpServlet {
                 firstName,
                 lastName,
                 gender,
-                hireDate,
-                departmentNum).build();
+                hireDate).build();
 
         boolean success = employeeService.delete(employee);
 
@@ -195,8 +192,7 @@ public class EmployeeServlet extends HttpServlet {
                 firstName,
                 lastName,
                 gender,
-                hireDate,
-                departmentNum).build();
+                hireDate).build();
         boolean success = employeeService.delete(employee);
 
         if (success) {

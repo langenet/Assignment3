@@ -129,7 +129,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
             String lastName = "";
             String gender = "";
             Date hireDate = null;
-            String department = "";
 
             while (rs.next()) {
                 empNo = rs.getInt("emp_no");
@@ -138,15 +137,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 lastName = rs.getString("last_name");
                 gender = rs.getString("gender");
                 hireDate = rs.getDate("hire_date");
-                department = rs.getString("dept_no");
                 if (empNo > 0) {
                     employee = new Employee.Builder(empNo,
                             birthDate,
                             firstName,
                             lastName,
                             gender,
-                            hireDate,
-                            department).build();
+                            hireDate).build();
                 }
                 employees.add(employee);
             }
@@ -191,7 +188,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             String lastName = "";
             String gender = "";
             Date hireDate = null;
-            String department = "";
+
             while (rs.next()) {
                 empNo = rs.getInt("emp_no");
                 birthDate = rs.getDate("birth_date");
@@ -199,7 +196,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 lastName = rs.getString("last_name");
                 gender = rs.getString("gender");
                 hireDate = rs.getDate("hire_date");
-                department = rs.getString("dept_no");
+
             }
             if (empNo > 0) {
                 employee = new Employee.Builder(id,
@@ -207,8 +204,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
                         firstName,
                         lastName,
                         gender,
-                        hireDate,
-                        department).build();
+                        hireDate).build();
             }
 
         } catch (SQLException e) {

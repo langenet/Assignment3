@@ -21,7 +21,7 @@ public class Employee implements DTO{
     private boolean isManager;
     private double salary;
     private String title;
-    private String department;
+    private Department department;
     
     private Employee(Builder builder){
             
@@ -31,7 +31,6 @@ public class Employee implements DTO{
             this.lastName = builder.lastName;
             this.gender = builder.gender;
             this.hireDate = builder.hireDate;
-            this.department = builder.department;
     }
 
     public static class Builder{
@@ -44,15 +43,14 @@ public class Employee implements DTO{
         private boolean isManager;
         private double salary;
         private String title;
-        private String department;
+        private Department department;
         
         public Builder( int empNo,
                 Date birthDate,
                 String firstName, 
                 String lastName, 
                 String gender,
-                Date hireDate,
-                String department){
+                Date hireDate){
             
             this.empNo = empNo;
             this.birthDate = birthDate;
@@ -60,7 +58,6 @@ public class Employee implements DTO{
             this.lastName = lastName;
             this.gender = gender;
             this.hireDate = hireDate;
-            this.department = department;
             
         }
 
@@ -83,7 +80,7 @@ public class Employee implements DTO{
             return this;
         }
         
-        public Builder setDepartment(String department) {
+        public Builder setDepartment(Department department) {
             this.department = department;
             return this;
         }
@@ -162,11 +159,11 @@ public class Employee implements DTO{
         this.title = title;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 
-    public void setDepartment(String department) {
+    public void setDepartment(Department department) {
         this.department = department;
     }
     
