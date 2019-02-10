@@ -143,7 +143,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
                             firstName,
                             lastName,
                             gender,
-                            hireDate).build();
+                            hireDate,
+                            department).build();
                 }
                 employees.add(employee);
             }

@@ -6,6 +6,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,6 +15,7 @@
     </head>
 
     <body>
+    <center>
         <h1>Add Employee</h1>
 
         <form action ="EmployeeServlet" method ="POST">
@@ -74,12 +76,11 @@
                         Department:
                     </td>
                     <td>
-                        <select name="department">
-
-                            <c:forEach items="departments" var="departmentValue">
+                          <select  name="department">
+                            <c:forEach items="${departments}" var="departmentValue">
                                 <option value="${departmentValue.deptNo}">${departmentValue.deptName}</option>
                             </c:forEach>
-                        </select>                  
+                        </select>                       
                     </td>
                 </tr>
                 <tr>
@@ -197,6 +198,6 @@
             </table>
 
             <input type ="submit" value="Add Employee"/>
-
+    </center>
     </body>
 </html>

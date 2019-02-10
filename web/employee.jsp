@@ -13,7 +13,8 @@
         <title>Employee Page</title>
     </head>
     <body>
-        <h1>Hello Employees!</h1>
+    <center>
+        <h1>Employees Information and Management</h1>
         <form action ="EmployeeServlet" method ="POST">
             <input type="hidden" value="getById" name="method" />
             Search by Employee Id: <input type="text" name ="empNo"/>
@@ -65,6 +66,6 @@
         </form>
 
 
-
+    </center>
     </body>
 </html>
