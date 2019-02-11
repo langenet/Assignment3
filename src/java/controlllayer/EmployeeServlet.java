@@ -155,13 +155,20 @@ public class EmployeeServlet extends HttpServlet {
 
         boolean success;
         if (method.equals("add")) {
-
-            success = employeeService.add(employee)                    
-                    && (isManager ? departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo): true)
-                    && departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo)
-                    && titleService.add(empNo, title, titleFrom, titleTo)
-                    && salaryService.add(empNo, salary, salaryFrom, salaryTo );
-            
+            success = employeeService.add(employee);
+            success = departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
+            success = titleService.add(empNo, title, titleFrom, titleTo);
+            success = salaryService.add(empNo, salary, salaryFrom, salaryTo);
+            if(isManager){
+            success = departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
+            }
+//
+//            success = employeeService.add(employee)                    
+//                    && (isManager ? departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo): true)
+//                    && departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo)
+//                    && titleService.add(empNo, title, titleFrom, titleTo)
+//                    && salaryService.add(empNo, salary, salaryFrom, salaryTo );
+//            
         } else {
             success = employeeService.update(employee);
         }
