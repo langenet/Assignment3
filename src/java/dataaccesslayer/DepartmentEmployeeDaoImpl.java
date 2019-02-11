@@ -79,12 +79,15 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         return departmentEmployees;
     }
     
+    
+    @Override
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
-    PreparedStatement pstmt = null;
-
+    
+        PreparedStatement pstmt = null;
+        
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from dept_emp");
+            pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
             ResultSet rs = pstmt.executeQuery();
             pstmt = con.prepareStatement("INSERT into dept_emp (emp_no, dept_no, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
