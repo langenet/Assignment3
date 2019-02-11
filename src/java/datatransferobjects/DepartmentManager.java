@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Robert
  */
-public class DepartmentManager implements DTO {
+public class DepartmentManager {
 
     private int empNo;
     private String deptNo;

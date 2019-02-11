@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author alexr
  */
-public class Salary implements DTO {
+public class Salary {
 
     private int empNo;
     private double salary;

@@ -36,29 +36,29 @@ public class EmployeeServlet extends HttpServlet {
     private TitleService titleService = new TitleService();
     private SalaryService salaryService = new SalaryService();
 
-    Employee employee;
-    List<Employee> employees;
-    Department department;
-    List<Department> departments;
-    String method = null;
-    int empNo = -1;
-    Date birthDate = null;
-    Date hireDate = null;
-    String firstName = "";
-    String lastName = "";
-    String gender = "";
-    String departmentNum = "";
-    Date deptFromDate = null;
-    Date deptToDate = null;
-    boolean isManager = false;
-    Date employeeTypeFrom = null;
-    Date employeeTypeTo = null;
-    String title = "";
-    Date titleFrom = null;
-    Date titleTo = null;
-    int salary = 0;
-    Date salaryFrom = null;
-    Date salaryTo = null;
+    private Employee employee;
+    private List<Employee> employees;
+    private Department department;
+    private List<Department> departments;
+    private String method = null;
+    private int empNo = -1;
+    private Date birthDate = null;
+    private Date hireDate = null;
+    private String firstName = "";
+    private String lastName = "";
+    private String gender = "";
+    private String departmentNum = "";
+    private Date deptFromDate = null;
+    private Date deptToDate = null;
+    private boolean isManager = false;
+    private Date employeeTypeFrom = null;
+    private Date employeeTypeTo = null;
+    private String title = "";
+    private Date titleFrom = null;
+    private Date titleTo = null;
+    private int salary = 0;
+    private Date salaryFrom = null;
+    private Date salaryTo = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

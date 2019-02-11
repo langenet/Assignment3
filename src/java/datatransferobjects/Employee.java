@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Robert
  */
-public class Employee implements DTO{
+public class Employee{
     private int empNo;
     private Date birthDate;
     private String firstName;
@@ -19,7 +19,7 @@ public class Employee implements DTO{
     private String gender;
     private Date hireDate;
     private boolean isManager;
-    private double salary;
+    private int salary;
     private String title;
     private Department department;
     
@@ -41,7 +41,7 @@ public class Employee implements DTO{
         private String gender;
         private Date hireDate;
         private boolean isManager;
-        private double salary;
+        private int salary;
         private String title;
         private Department department;
         
@@ -70,7 +70,7 @@ public class Employee implements DTO{
             return this;
         }
 
-        public Builder setSalary(double salary) {
+        public Builder setSalary(int salary) {
             this.salary = salary;
             return this;
         }
@@ -143,11 +143,11 @@ public class Employee implements DTO{
         this.isManager = isManager;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
-    public void setSalary(double salary) {
+    public void setSalary(int salary) {
         this.salary = salary;
     }
 
