@@ -16,28 +16,27 @@ import static org.junit.Assert.*;
  * @author alexr
  */
 public class EmployeeJUnitTest {
-    
+
     public EmployeeJUnitTest() {
     }
-    
+
     @Test
-    public void testingEmployeeAdd(){
-        
+    public void testingEmployeeAdd() {
+
         int empNo = -1;
         Date birthDate = new Date(2007, 1, 1);
         String firstName = "Joe";
         String lastName = "Smith";
         String gender = "m";
         Date hireDate = new Date(2018, 9, 9);
-        
-                
+
         Employee employee = new Employee.Builder(empNo,
                 birthDate,
                 firstName,
                 lastName,
                 gender,
                 hireDate).build();
-        
+
         EmployeeService employeeService = new EmployeeService();
         assertTrue(employeeService.add(employee) > 0);
     }

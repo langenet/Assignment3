@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Robert
  */
-public class Title  {
+public class Title {
 
     private int empNo;
     private String title;
