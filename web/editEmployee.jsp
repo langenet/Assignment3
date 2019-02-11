@@ -12,7 +12,10 @@
         <title>Edit Employee</title>
     </head>
     <body>
-      <h1>Edit Employee</h1>
+    <center>
+        <%@ include file="header.jsp" %>  
+
+        <h1>Edit Employee</h1>
 
         <form action ="EmployeeServlet" method ="POST">
             <input type="hidden" value="update" name="method" />
@@ -50,7 +53,7 @@
                     </td>
                     <td>
                         <select name="gender" value="$(employee.gender}">
-                            
+
                             <option value="M">Male</option>
                             <option value="F">Female</option>
                         </select>
@@ -67,6 +70,6 @@
                 </tr>
             </table>
             <input type ="submit" value="Update Employee"/>
-
-    </body>
+    </center>
+</body>
 </html>

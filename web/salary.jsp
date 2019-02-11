@@ -13,6 +13,8 @@
         <title>Salaries</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Salaries</h1>
         <form action ="DepartmentEmployeeServlet" method ="POST">
@@ -53,5 +55,5 @@
                 </tbody>
             </table>
     </center>
-        </form>    </body>
+</form>    </body>
 </html>

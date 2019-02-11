@@ -12,6 +12,8 @@
         <title>Error</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
         <h1>There was an error processing your request</h1>
     </body>
 </html>

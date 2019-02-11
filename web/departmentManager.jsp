@@ -9,10 +9,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Department Managers</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Department Managers</h1>
         <form action ="DepartmentManagerServlet" method ="POST">
@@ -55,5 +58,5 @@
 
         </form>
     </center>
-    </body>
+</body>
 </html>

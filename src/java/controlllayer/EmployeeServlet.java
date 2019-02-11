@@ -80,8 +80,10 @@ public class EmployeeServlet extends HttpServlet {
 
             switch (method) {
                 case "add":
-                case "update":
                     add(request, response);
+                    break;
+                case "update":
+                    update(request, response);
                     break;
                 case "view": // might be able to remove this one
                     view(request, response);
@@ -140,11 +142,6 @@ public class EmployeeServlet extends HttpServlet {
         isManager = Boolean.parseBoolean(request.getParameter("isManager"));
         title = request.getParameter("title");
         salary = Integer.parseInt(request.getParameter("salary"));
-               
-        
-        if (method.equals("update")) {
-            empNo = Integer.parseInt(request.getParameter("empNo"));
-        }
 
         employee = new Employee.Builder(empNo,
                 birthDate,
@@ -153,25 +150,59 @@ public class EmployeeServlet extends HttpServlet {
                 gender,
                 hireDate).build();
 
-        boolean success = false;
-        
-        if (method.equals("add")) {
-            empNo = employeeService.add(employee);
-            if(empNo > 0){
-                success = departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
-                success = titleService.add(empNo, title, titleFrom, titleTo);
-                success = salaryService.add(empNo, salary, salaryFrom, salaryTo);
-                if (isManager) {
-                    success = departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
-                }
-                
+        boolean employeeSuccess = false;
+        boolean departmentSuccess = false;
+        boolean managerSuccess = false;
+        boolean titleSuccess = false;
+        boolean salarySuccess = false;
+
+        empNo = employeeService.add(employee);
+        if (empNo > 0) {
+            employeeSuccess = true;
+            departmentSuccess = departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
+            titleSuccess = titleService.add(empNo, title, titleFrom, titleTo);
+            salarySuccess = salaryService.add(empNo, salary, salaryFrom, salaryTo);
+            if (isManager) {
+                managerSuccess = departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
+            } else {
+                employeeSuccess = false;
             }
-           
-        } else {
-            success = employeeService.update(employee);
+
         }
 
-        if (success) {
+        if (employeeSuccess 
+                && departmentSuccess
+                && titleSuccess
+                && salarySuccess
+                && managerSuccess) {
+            view(request, response);
+        } else {
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+    }
+
+    private void update(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        try {
+            birthDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("birthDate")).getTime());
+            hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
+        } catch (ParseException parseException) {
+            parseException.printStackTrace();
+        }
+
+        firstName = request.getParameter("firstName");
+        lastName = request.getParameter("lastName");
+        gender = request.getParameter("gender");
+
+        empNo = Integer.parseInt(request.getParameter("empNo"));
+
+        employee = new Employee.Builder(empNo,
+                birthDate,
+                firstName,
+                lastName,
+                gender,
+                hireDate).build();
+
+        if (employeeService.update(employee)) {
             view(request, response);
         } else {
             request.getRequestDispatcher("error.jsp").forward(request, response);

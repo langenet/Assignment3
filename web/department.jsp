@@ -13,25 +13,27 @@
         <title>Department Page</title>
     </head>
     <body>
-       <center>
+        <%@ include file="header.jsp" %>  
+
+    <center>
         <h1>Departments</h1>
-        <form action ="DepartmentServlet" method ="POST">
-            <input type="hidden" value="getById" name="method" />
-            Search by Department Id: <input type="text" name ="deptNo"/>
-            <input type ="submit" value="submit"/>
-            <hr/>
-            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
-                Add Department
-            </a>
-            <br/>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Department ID</th>
-                        <th>Department Name</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <!--        <form action ="DepartmentServlet" method ="POST">-->
+        <!--            <input type="hidden" value="getById" name="method" />
+                    Search by Department Id: <input type="text" name ="deptNo"/>
+                    <input type ="submit" value="submit"/>-->
+        <hr/>
+<!--            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
+            Add Department
+        </a>-->
+        <br/>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Department ID</th>
+                    <th>Department Name</th>
+                </tr>
+            </thead>
+            <tbody>
                 <c:forEach items="${departments}" var="department">
                     <tr>
                         <td>
@@ -45,10 +47,10 @@
                         </td>
                     </tr>
                 </c:forEach>
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-        </form>
-       <center>
-    </body>
-</html>
+        <!--</form>-->
+        <center>
+            </body>
+            </html>

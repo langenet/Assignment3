@@ -13,6 +13,8 @@
         <title>Employee Page</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Employees Information and Management</h1>
         <form action ="EmployeeServlet" method ="POST">
@@ -23,6 +25,7 @@
             <a href="${pageContext.request.contextPath}/EmployeeServlet?method=initAdd">
                 Add Employee
             </a>
+            <br/>
             <br/>
             <table border="1">
                 <thead>
@@ -65,5 +68,5 @@
 
         </form>
     </center>
-    </body>
+</body>
 </html>

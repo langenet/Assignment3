@@ -15,6 +15,8 @@
     </head>
 
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Add Employee</h1>
 
@@ -76,7 +78,7 @@
                         Department:
                     </td>
                     <td>
-                          <select  name="department">
+                        <select  name="department">
                             <c:forEach items="${departments}" var="departmentValue">
                                 <option value="${departmentValue.deptNo}">${departmentValue.deptName}</option>
                             </c:forEach>
@@ -199,5 +201,5 @@
 
             <input type ="submit" value="Add Employee"/>
     </center>
-    </body>
+</body>
 </html>

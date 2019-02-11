@@ -12,6 +12,8 @@
         <title>Department Page</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Department Page</h1>
         <form action ="DepartmentServlet" method ="POST">
@@ -19,9 +21,9 @@
             Search by Department Id: <input type="text" name ="deptNo"/>
             <input type ="submit" value="submit"/>
             <hr/>
-            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
+<!--            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
                 Add Department
-            </a>
+            </a>-->
             <br/>
             <table border="1">
                 <thead>
@@ -31,18 +33,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${departments}" var="department">
-                        <tr>
-                            <td>
-                                <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
-                                    ${department.deptNo}
-                                </a>
-                            </td>
-                            <td>
-                                ${department.deptName}
-                            </td
-                        </tr>
-                    </c:forEach>
+                <c:forEach items="${departments}" var="department">
+                    <tr>
+                        <td>
+                            <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
+                                ${department.deptNo}
+                            </a>
+                        </td>
+                        <td>
+                            ${department.deptName}
+                        </td
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
 
@@ -50,5 +52,5 @@
 
 
     </center>
-    </body>
+</body>
 </html>

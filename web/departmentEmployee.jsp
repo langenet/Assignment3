@@ -13,6 +13,8 @@
         <title>Department Employees</title>
     </head>
     <body>
+        <%@ include file="header.jsp" %>  
+
     <center>
         <h1>Department Employees</h1>
         <form action ="DepartmentEmployeeServlet" method ="POST">
@@ -34,26 +36,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${departmentEmployees}" var="departmentEmployee">
-                    <tr>
-                        <td>
-                            ${departmentEmployee.empNo}
-                        </td>
-                        <td>
-                            ${departmentEmployee.deptNo}
-                        </td>
-                        <td>
-                            ${departmentEmployee.fromDate}
-                        </td>
-                        <td>
-                            ${departmentEmployee.toDate}
-                        </td>
-                    </tr>
-                </c:forEach>
+                    <c:forEach items="${departmentEmployees}" var="departmentEmployee">
+                        <tr>
+                            <td>
+                                ${departmentEmployee.empNo}
+                            </td>
+                            <td>
+                                ${departmentEmployee.deptNo}
+                            </td>
+                            <td>
+                                ${departmentEmployee.fromDate}
+                            </td>
+                            <td>
+                                ${departmentEmployee.toDate}
+                            </td>
+                        </tr>
+                    </c:forEach>
                 </tbody>
             </table>
 
         </form>
     </center>
-    </body>
+</body>
 </html>

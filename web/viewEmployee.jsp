@@ -10,21 +10,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>View Employee Record</title>
     </head>
-<style>
-p {
-  display: inline;
-}
-</style>
+    <style>
+        p {
+            display: inline;
+        }
+    </style>
     <body>
+
+    <center>
+
+        <%@ include file="header.jsp" %>  
         <h1>Employee Information</h1>
 
         <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=edit&empNo=${employee.empNo}">
                 Edit Employee</a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p>
-        
-          
-                <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}">
-                        Delete Employee</a></p>
-        
+
+
+        <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}">
+                Delete Employee</a></p>
+
         <br/>
         <table border="0" cellpadding="5" width="300">
             <tr>
@@ -76,5 +80,7 @@ p {
                 </td>
             </tr>
         </table>
-    </body>
+
+    </center>
+</body>
 </html>

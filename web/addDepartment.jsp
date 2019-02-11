@@ -11,8 +11,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Add Department</title>
     </head>
-    
+
     <body>
+        <%@ include file="header.jsp" %>  
+
         <h1>Add Employee</h1>
 
         <form action ="EmployeeServlet" method ="POST">
