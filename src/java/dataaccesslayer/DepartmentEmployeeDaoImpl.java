@@ -81,7 +81,7 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
     
     
     @Override
-    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
+    public boolean add(int empNo,String deptNo, Date fromDate, Date toDate) {
     
         PreparedStatement pstmt = null;
         
