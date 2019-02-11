@@ -16,14 +16,18 @@ import java.util.List;
  * @author alexr
  */
 public class SalaryService {
-            private SalaryDao salaryDaoImpl = new SalaryDaoImpl();
 
+    private SalaryDao salaryDaoImpl = new SalaryDaoImpl();
 
     public List<Salary> view() {
         return salaryDaoImpl.view();
     }
-    
-    public boolean add(int empNo,int salary, Date fromDate, Date toDate) {
-        return salaryDaoImpl.add(empNo,salary, fromDate, toDate);
+
+    public boolean add(int empNo, int salary, Date fromDate, Date toDate) {
+        return salaryDaoImpl.add(empNo, salary, fromDate, toDate);
+    }
+
+    public Salary getById(int empNo, Date fromDate) {
+        return salaryDaoImpl.getById(empNo, fromDate);
     }
 }

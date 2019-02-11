@@ -16,6 +16,8 @@ import java.util.List;
 public interface SalaryDao {
 
     List<Salary> view();
-    
+
     public boolean add(int empNo, int salary, Date fromDate, Date toDate);
+
+    public Salary getById(int empNo, Date fromDate);
 }

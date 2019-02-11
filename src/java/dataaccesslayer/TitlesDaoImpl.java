@@ -25,7 +25,6 @@ public class TitlesDaoImpl implements TitlesDao {
     public TitlesDaoImpl() {
     }
 
-
     @Override
     public List<Title> view() {
 //        Connection con = null;
@@ -80,21 +79,19 @@ public class TitlesDaoImpl implements TitlesDao {
         return titles;
     }
 
- @Override
- public boolean add(int empNo, String title, Date fromDate, Date toDate) {
-    PreparedStatement pstmt = null;
+    @Override
+    public boolean add(int empNo, String title, Date fromDate, Date toDate) {
+        PreparedStatement pstmt = null;
 
         try (Connection con = dataSource.createConnection()) {
 
- 
             pstmt = con.prepareStatement("INSERT into titles (emp_no, title, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
-                pstmt.setInt(1, empNo);
-                pstmt.setString(2, title);
-                pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
-                pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
-                pstmt.executeUpdate();
-            
+            pstmt.setInt(1, empNo);
+            pstmt.setString(2, title);
+            pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
+            pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -118,4 +115,62 @@ public class TitlesDaoImpl implements TitlesDao {
 
         return true;
     }
+
+    public Title getById(int empNo, String searchTitle, Date fromDate) {
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Title title = null;
+
+        try (Connection con = dataSource.createConnection()) {
+
+            pstmt = con.prepareStatement("select * from titles where emp_no = ?"
+                    + " and title = ?"
+                    + " and from_date = ?");
+
+            pstmt.setInt(1, empNo);
+            pstmt.setString(2, searchTitle);
+            pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
+
+            rs = pstmt.executeQuery();
+            int empNoValue = -1;
+            String titleValue = "";
+            Date fromDateValue = null;
+            Date toDateValue = null;
+          
+
+            while (rs.next()) {
+                empNoValue = rs.getInt("emp_no");
+                titleValue = rs.getString("title");
+                fromDateValue = rs.getDate("from_date");
+                toDateValue = rs.getDate("to_date");
+                if (empNoValue > 0) {
+                    title = new Title.Builder(empNoValue,
+                            titleValue,
+                            fromDateValue,
+                            toDateValue).build();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return title;
+    }
+
 }

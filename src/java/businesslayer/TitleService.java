@@ -7,6 +7,7 @@ package businesslayer;
 
 import dataaccesslayer.TitlesDao;
 import dataaccesslayer.TitlesDaoImpl;
+import datatransferobjects.Employee;
 import datatransferobjects.Title;
 import java.util.Date;
 import java.util.List;
@@ -24,5 +25,9 @@ public class TitleService {
     }
     public boolean add(int empNo, String title, Date fromDate, Date toDate) {
         return titleDaoImpl.add(empNo, title, fromDate, toDate);
+    }
+    
+    public Title getById(int empNo, String title, Date fromDate) {
+        return titleDaoImpl.getById(empNo, title, fromDate);
     }
 }
