@@ -39,7 +39,7 @@ public class TitleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-           // Need to figure out based on the request coming in which method
+        // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
         method = request.getParameter("method");
         if (method != null) {
@@ -72,7 +72,8 @@ public class TitleServlet extends HttpServlet {
             view(request, response);
         }
     }
- private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        if (method.equals("update")) {
 //            empNo = Integer.parseInt(request.getParameter("empNo"));
@@ -172,7 +173,6 @@ public class TitleServlet extends HttpServlet {
 //        request.setAttribute("employee", employee);
 //        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

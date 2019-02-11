@@ -14,7 +14,10 @@ import java.util.List;
  * @author alexr
  */
 public interface DepartmentEmployeeDao {
+
     List<DepartmentEmployee> view();
-    
+
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate);
+
+    public DepartmentEmployee getById(int empNo, String deptNo);
 }

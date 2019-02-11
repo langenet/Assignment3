@@ -6,11 +6,8 @@
 package controlllayer;
 
 import businesslayer.DepartmentService;
-import businesslayer.EmployeeService;
 import datatransferobjects.Department;
-import datatransferobjects.Employee;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,15 +24,14 @@ public class DepartmentServlet extends HttpServlet {
     Department department;
     List<Department> departments;
     String method = null;
-    String deptNo =  "";
+    String deptNo = "";
     String deptName = "";
-    
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         method = request.getParameter("method");
-        
+
         if (method != null) {
 
             switch (method) {
@@ -57,14 +53,16 @@ public class DepartmentServlet extends HttpServlet {
             view(request, response);
         }
     }
+
     private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         departments = departmentService.view();
-        
+
         request.setAttribute("departments", departments);
         request.getRequestDispatcher("department.jsp").forward(request, response);
     }
-     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -104,4 +102,3 @@ public class DepartmentServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-

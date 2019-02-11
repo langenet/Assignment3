@@ -6,7 +6,6 @@
 package dataaccesslayer;
 
 import datatransferobjects.DepartmentManager;
-import datatransferobjects.Employee;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -80,20 +79,74 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
         return departmentManagers;
     }
 
-    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
-    PreparedStatement pstmt = null;
+    @Override
+    public DepartmentManager getById(int empNo, String deptNo) {
+//        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        DepartmentManager departmentManager = null;
 
         try (Connection con = dataSource.createConnection()) {
 
- 
+            pstmt = con.prepareStatement("select * from dept_manager where emp_no = ?"
+                    + " and dept_no = ?");
+
+            pstmt.setInt(1, empNo);
+            pstmt.setString(2, deptNo);
+            rs = pstmt.executeQuery();
+
+            int empNoValue = -1;
+            String deptNoValue = "";
+            Date fromDateValue = null;
+            Date toDateValue = null;
+
+            while (rs.next()) {
+                empNoValue = rs.getInt("emp_no");
+                deptNoValue = rs.getString("dept_no");
+                fromDateValue = rs.getDate("from_date");
+                toDateValue = rs.getDate("to_date");
+                if (empNo > 0) {
+                    departmentManager = new DepartmentManager.Builder(empNoValue,
+                            deptNoValue,
+                            fromDateValue,
+                            toDateValue).build();
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+
+        return departmentManager;
+    }
+
+    public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
+        PreparedStatement pstmt = null;
+
+        try (Connection con = dataSource.createConnection()) {
+
             pstmt = con.prepareStatement("INSERT into dept_manager (emp_no, dept_no, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
-                pstmt.setInt(1, empNo);
-                pstmt.setString(2, deptNo);
-                pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
-                pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
-                pstmt.executeUpdate();
-            
+            pstmt.setInt(1, empNo);
+            pstmt.setString(2, deptNo);
+            pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
+            pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

@@ -136,7 +136,6 @@ public class TitlesDaoImpl implements TitlesDao {
             String titleValue = "";
             Date fromDateValue = null;
             Date toDateValue = null;
-          
 
             while (rs.next()) {
                 empNoValue = rs.getInt("emp_no");

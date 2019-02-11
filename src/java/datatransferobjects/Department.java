@@ -5,8 +5,6 @@
  */
 package datatransferobjects;
 
-import java.util.Date;
-
 /**
  *
  * @author alexr

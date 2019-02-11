@@ -38,12 +38,12 @@ public class DataSource {
 
     public Connection createConnection() {
         try {
-            
+
             /* 
             Source: https://stackoverflow.com/questions/17278060/database-connection-not-closing
             Author: My-Name-Is
             date: 2013-06-24
-            */
+             */
             if (connection != null && !connection.isClosed()) {
                 System.out.println("Cannot create new connection, one exists already");
 
@@ -65,12 +65,12 @@ public class DataSource {
         return connection;
 
     }
-    
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         return connection;
     }
-    
-    public void closeConnection() throws SQLException{
+
+    public void closeConnection() throws SQLException {
         this.connection.close();
     }
 }

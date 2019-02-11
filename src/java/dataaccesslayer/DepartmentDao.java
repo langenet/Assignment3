@@ -6,7 +6,6 @@
 package dataaccesslayer;
 
 import datatransferobjects.Department;
-import datatransferobjects.Employee;
 import java.util.List;
 
 /**
@@ -14,5 +13,11 @@ import java.util.List;
  * @author alexr
  */
 public interface DepartmentDao {
-      List<Department> view();
+
+    List<Department> view();
+
+    Department getById(String deptNo);
+
+    String add(String deptName);
+
 }

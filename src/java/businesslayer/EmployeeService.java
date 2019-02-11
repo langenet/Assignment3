@@ -5,6 +5,7 @@
  */
 package businesslayer;
 
+import dataaccesslayer.EmployeeDao;
 import dataaccesslayer.EmployeeDaoImpl;
 import datatransferobjects.Employee;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class EmployeeService {
 
-    private EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
+    private EmployeeDao employeeDaoImpl = new EmployeeDaoImpl();
 
     public int add(Employee employee) {
         return employeeDaoImpl.add(employee);
@@ -36,4 +37,4 @@ public class EmployeeService {
     public boolean delete(Employee employee) {
         return employeeDaoImpl.delete(employee);
     }
-    }
+}

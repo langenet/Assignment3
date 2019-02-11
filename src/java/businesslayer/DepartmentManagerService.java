@@ -27,4 +27,8 @@ public class DepartmentManagerService {
         return deptManagerDaoImpl.add(empNo, deptNo, fromDate, toDate);
     }
 
+    public DepartmentManager getById(int empNo, String deptNo) {
+        return deptManagerDaoImpl.getById(empNo, deptNo);
+    }
+
 }

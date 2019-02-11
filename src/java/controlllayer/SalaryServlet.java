@@ -8,7 +8,6 @@ package controlllayer;
 import businesslayer.SalaryService;
 import datatransferobjects.Salary;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,12 +19,14 @@ import javax.servlet.http.HttpServletResponse;
  * @author alexr
  */
 public class SalaryServlet extends HttpServlet {
- SalaryService salaryService = new SalaryService();
+
+    SalaryService salaryService = new SalaryService();
     Salary salary;
     List<Salary> salaries;
 
     String method = null;
     int empNo = -1;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,7 +39,7 @@ public class SalaryServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-             // Need to figure out based on the request coming in which method
+        // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
         method = request.getParameter("method");
         if (method != null) {
@@ -71,7 +72,8 @@ public class SalaryServlet extends HttpServlet {
             view(request, response);
         }
     }
-     private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    private void add(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //        if (method.equals("update")) {
 //            empNo = Integer.parseInt(request.getParameter("empNo"));
@@ -171,7 +173,6 @@ public class SalaryServlet extends HttpServlet {
 //        request.setAttribute("employee", employee);
 //        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

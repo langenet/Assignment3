@@ -170,7 +170,7 @@ public class EmployeeServlet extends HttpServlet {
 
         }
 
-        if (employeeSuccess 
+        if (employeeSuccess
                 && departmentSuccess
                 && titleSuccess
                 && salarySuccess
@@ -281,7 +281,6 @@ public class EmployeeServlet extends HttpServlet {
 //        request.setAttribute("employee", employee);
 //        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
 //    }
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

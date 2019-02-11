@@ -17,8 +17,8 @@ public interface EmployeeDao {
     int add(Employee employee);
 
     boolean update(Employee employee);
-    
-    boolean delete(Employee employee);    
+
+    boolean delete(Employee employee);
 
     List<Employee> view();
 

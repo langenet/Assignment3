@@ -6,7 +6,6 @@
 package dataaccesslayer;
 
 import datatransferobjects.Salary;
-import datatransferobjects.Title;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -113,8 +112,6 @@ public class SalaryDaoImpl implements SalaryDao {
                             toDateValue).build();
                 }
             }
-            
-            return salary;
 
         } catch (SQLException e) {
             e.printStackTrace();
