@@ -90,7 +90,7 @@
                         From:
                     </td>
                     <td>
-                        <input type="text" name="deptFromDate" 
+                        <input type="text" name="deptFromDate" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
                     </td>
                 </tr>
@@ -99,7 +99,7 @@
                         To:
                     </td>
                     <td>
-                        <input type="text" name="deptToDate" 
+                        <input type="text" name="deptToDate" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
 
                     </td>
@@ -121,7 +121,7 @@
                         From:
                     </td>
                     <td>
-                        <input type="text" name="managerFrom" 
+                        <input type="text" name="managerFrom" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
                     </td>
                 </tr>
@@ -130,7 +130,7 @@
                         To:
                     </td>
                     <td>
-                        <input type="text" name="managerTo" 
+                        <input type="text" name="managerTo" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
 
                     </td>
@@ -143,7 +143,7 @@
                         Title:
                     </td>
                     <td>
-                        <input type="text" name="title"/>
+                        <input type="text" name="title" required />
                     </td>
                 </tr>
                 <tr>
@@ -151,7 +151,7 @@
                         From:
                     </td>
                     <td>
-                        <input type="text" name="titleFrom" 
+                        <input type="text" name="titleFrom" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
                     </td>
                 </tr>
@@ -160,7 +160,7 @@
                         To:
                     </td>
                     <td>
-                        <input type="text" name="titleTo" 
+                        <input type="text" name="titleTo" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
 
                     </td>
@@ -174,7 +174,8 @@
                         Salary
                     </td>
                     <td>
-                        <input type="text" name="salary"/>
+                        <input type="text" name="salary" required
+                           pattern="^\d{6}\$"    
                     </td>
                 </tr>
                 <tr>
@@ -182,7 +183,7 @@
                         From:
                     </td>
                     <td>
-                        <input type="text" name="salaryFrom" 
+                        <input type="text" name="salaryFrom" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
                     </td>
                 </tr>
@@ -191,7 +192,7 @@
                         To:
                     </td>
                     <td>
-                        <input type="text" name="salaryTo" 
+                        <input type="text" name="salaryTo" required
                                pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" title="yyyy-mm-dd" />                   
 
                     </td>

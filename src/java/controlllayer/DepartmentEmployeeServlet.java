@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DepartmentEmployeeServlet extends HttpServlet {
 
-    DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
-    DepartmentEmployee departmentEmployee;
-    List<DepartmentEmployee> departmentEmployees;
+    private DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
+    private DepartmentEmployee departmentEmployee;
+    private List<DepartmentEmployee> departmentEmployees;
 
     String method = null;
     int empNo = -1;
@@ -41,10 +41,10 @@ public class DepartmentEmployeeServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
-        method = request.getParameter("method");
-        if (method != null) {
+//        method = request.getParameter("method");
+//        if (method != null) {
             view(request, response);
-        }
+//        }
     }
 
   

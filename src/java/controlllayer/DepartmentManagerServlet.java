@@ -54,10 +54,10 @@ public class DepartmentManagerServlet extends HttpServlet {
         Employee employee = null;
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
-        method = request.getParameter("method");
-        if (method != null) {
+//        method = request.getParameter("method");
+//        if (method != null) {
             view(request, response);
-        }
+   //     }
     }
 
     private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

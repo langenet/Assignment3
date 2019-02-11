@@ -41,11 +41,11 @@ public class TitleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         // Need to figure out based on the request coming in which method
         // needs to be invoked at the service level
-        method = request.getParameter("method");
-        if (method != null) {
+//        method = request.getParameter("method");
+//        if (method != null) {
 
             view(request, response);
-        }
+//        }
     }
 
   
