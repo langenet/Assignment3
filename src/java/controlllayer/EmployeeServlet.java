@@ -165,7 +165,7 @@ public class EmployeeServlet extends HttpServlet {
             if (isManager) {
                 managerSuccess = departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
             } else {
-                employeeSuccess = false;
+                managerSuccess = true;
             }
 
         }
