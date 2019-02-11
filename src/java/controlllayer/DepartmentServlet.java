@@ -20,12 +20,12 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DepartmentServlet extends HttpServlet {
 
-    DepartmentService departmentService = new DepartmentService();
-    Department department;
-    List<Department> departments;
-    String method = null;
-    String deptNo = "";
-    String deptName = "";
+    private DepartmentService departmentService = new DepartmentService();
+    private Department department;
+    private List<Department> departments;
+    private String method = null;
+    private String deptNo = "";
+    private String deptName = "";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
