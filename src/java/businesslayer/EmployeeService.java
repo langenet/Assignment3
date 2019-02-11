@@ -17,7 +17,7 @@ public class EmployeeService {
 
     private EmployeeDaoImpl employeeDaoImpl = new EmployeeDaoImpl();
 
-    public boolean add(Employee employee) {
+    public int add(Employee employee) {
         return employeeDaoImpl.add(employee);
     }
 

@@ -84,7 +84,7 @@ public class SalaryDaoImpl implements SalaryDao {
         try (Connection con = dataSource.createConnection()) {
 
  
-            pstmt = con.prepareStatement("INSERT into salaries empNo, salary, from_date, to_date) "
+            pstmt = con.prepareStatement("INSERT into salaries (emp_No, salary, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
                 pstmt.setInt(1, empNo);
                 pstmt.setInt(2, salary);

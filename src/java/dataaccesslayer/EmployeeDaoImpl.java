@@ -26,10 +26,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     }
 
     @Override
-    public boolean add(Employee employee) {
+    public int add(Employee employee) {
 //        Connection con = null;
         PreparedStatement pstmt = null;
-
+        int empNo = -1;
         try (Connection con = dataSource.createConnection()) {
 
             pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
@@ -37,7 +37,8 @@ public class EmployeeDaoImpl implements EmployeeDao {
             pstmt = con.prepareStatement("INSERT into employees (emp_no, birth_date, first_name, last_name, gender, hire_date) "
                     + " Values(?, ?, ?, ?, ?, ?)");
             if (rs.next()) {
-                pstmt.setInt(1, rs.getInt("emp_no"));
+                empNo = rs.getInt("emp_no");
+                pstmt.setInt(1, empNo);
                 pstmt.setDate(2, new java.sql.Date(employee.getBirthDate().getTime()));
                 pstmt.setString(3, employee.getFirstName());
                 pstmt.setString(4, employee.getLastName());
@@ -45,12 +46,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
                 pstmt.setDate(6, new java.sql.Date(employee.getHireDate().getTime()));
                 pstmt.executeUpdate();
             } else {
-                return false;
+                return empNo;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return empNo;
         } finally {
             try {
                 if (pstmt != null) {
@@ -68,7 +69,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             }
         }
 
-        return true;
+        return empNo;
     }
 
     @Override

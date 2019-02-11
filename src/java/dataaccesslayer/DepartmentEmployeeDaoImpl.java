@@ -87,19 +87,13 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("Select max(emp_no) + 1 as emp_no from employees");
-            ResultSet rs = pstmt.executeQuery();
             pstmt = con.prepareStatement("INSERT into dept_emp (emp_no, dept_no, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
-            if (rs.next()) {
                 pstmt.setInt(1, empNo);
                 pstmt.setString(2, deptNo);
                 pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
                 pstmt.setDate(4, new java.sql.Date(toDate.getTime()));
                 pstmt.executeUpdate();
-            } else {
-                return false;
-            }
 
         } catch (SQLException e) {
             e.printStackTrace();

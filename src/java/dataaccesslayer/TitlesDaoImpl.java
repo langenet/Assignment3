@@ -87,7 +87,7 @@ public class TitlesDaoImpl implements TitlesDao {
         try (Connection con = dataSource.createConnection()) {
 
  
-            pstmt = con.prepareStatement("INSERT into titles emp_no, title, from_date, to_date) "
+            pstmt = con.prepareStatement("INSERT into titles (emp_no, title, from_date, to_date) "
                     + " Values(?, ?, ?, ?)");
                 pstmt.setInt(1, empNo);
                 pstmt.setString(2, title);

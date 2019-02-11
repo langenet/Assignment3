@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface EmployeeDao {
 
-    boolean add(Employee employee);
+    int add(Employee employee);
 
     boolean update(Employee employee);
     
