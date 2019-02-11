@@ -30,7 +30,7 @@
             <table border="1">
                 <thead>
                     <tr>
-                        <th>Employee Id</th>
+                        <th>Manager Id</th>
                         <th>Department No</th>
                         <th>From Date</th>
                         <th>To Date</th>

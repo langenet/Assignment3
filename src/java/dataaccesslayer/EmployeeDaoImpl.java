@@ -20,7 +20,7 @@ import java.util.List;
  */
 public class EmployeeDaoImpl implements EmployeeDao {
 
-    DataSource dataSource = DataSource.getInstance();
+    private DataSource dataSource = DataSource.getInstance();
 
     public EmployeeDaoImpl() {
     }
