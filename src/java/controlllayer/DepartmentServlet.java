@@ -33,23 +33,6 @@ public class DepartmentServlet extends HttpServlet {
         method = request.getParameter("method");
 
         if (method != null) {
-
-            switch (method) {
-                case "add":
-//                case "update":
-//                    add(request, response);
-//                    break;
-                case "view": // might be able to remove this one
-                    view(request, response);
-                    break;
-//                case "delete":
-//                    delete(request, response);
-//                    break;
-                default:
-                    view(request, response);
-                    break;
-            }
-        } else {
             view(request, response);
         }
     }
