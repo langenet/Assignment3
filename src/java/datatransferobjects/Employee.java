@@ -21,10 +21,6 @@ public class Employee {
     private String lastName;
     private String gender;
     private Date hireDate;
-    private boolean isManager;
-    private int salary;
-    private String title;
-    private Department department;
 
     private Employee(Builder builder) {
 
@@ -35,7 +31,6 @@ public class Employee {
         this.gender = builder.gender;
         this.hireDate = builder.hireDate;
     }
-
 
     // base class starts here
     public int getEmpNo() {
@@ -86,47 +81,15 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    public boolean isIsManager() {
-        return isManager;
-    }
-
-    public void setIsManager(boolean isManager) {
-        this.isManager = isManager;
-    }
-
-    public int getSalary() {
-        return salary;
-    }
-
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + this.empNo;
-        hash = 29 * hash + Objects.hashCode(this.birthDate);
-        hash = 29 * hash + Objects.hashCode(this.firstName);
-        hash = 29 * hash + Objects.hashCode(this.lastName);
-        hash = 29 * hash + Objects.hashCode(this.gender);
-        hash = 29 * hash + Objects.hashCode(this.hireDate);
+        int hash = 5;
+        hash = 53 * hash + this.empNo;
+        hash = 53 * hash + Objects.hashCode(this.birthDate);
+        hash = 53 * hash + Objects.hashCode(this.firstName);
+        hash = 53 * hash + Objects.hashCode(this.lastName);
+        hash = 53 * hash + Objects.hashCode(this.gender);
+        hash = 53 * hash + Objects.hashCode(this.hireDate);
         return hash;
     }
 
@@ -162,56 +125,68 @@ public class Employee {
         }
         return true;
     }
+
     public static class Builder {
-        
+
         private int empNo;
         private Date birthDate;
         private String firstName;
         private String lastName;
         private String gender;
         private Date hireDate;
-        private boolean isManager;
-        private int salary;
-        private String title;
-        private Department department;
-        
+
         public Builder(int empNo,
                 Date birthDate,
                 String firstName,
                 String lastName,
                 String gender,
                 Date hireDate) {
-            
+
             this.empNo = empNo;
             this.birthDate = birthDate;
             this.firstName = firstName;
             this.lastName = lastName;
             this.gender = gender;
             this.hireDate = hireDate;
-            
+
         }
-        
+
         public Employee build() {
             return new Employee(this);
         }
-        
-        public Builder setIsManager(boolean isManager) {
-            this.isManager = isManager;
+
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
             return this;
+
         }
-        
-        public Builder setSalary(int salary) {
-            this.salary = salary;
+
+        public Builder setBirthDate(Date birthDate) {
+            this.birthDate = birthDate;
             return this;
+
         }
-        
-        public Builder setTitle(String title) {
-            this.title = title;
+
+        public Builder setFirstName(String firstName) {
+            this.firstName = firstName;
             return this;
+
         }
-        
-        public Builder setDepartment(Department department) {
-            this.department = department;
+
+        public Builder setLastName(String lastName) {
+            this.lastName = lastName;
+            return this;
+
+        }
+
+        public Builder setGender(String gender) {
+            this.gender = gender;
+            return this;
+
+        }
+
+        public Builder setHireDate(Date hireDate) {
+            this.hireDate = hireDate;
             return this;
         }
     }
