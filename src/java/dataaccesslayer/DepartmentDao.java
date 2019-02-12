@@ -16,6 +16,8 @@ public interface DepartmentDao {
 
     List<Department> view();
 
+    int viewCount();
+
     Department getById(String deptNo);
 
     String add(String deptName);

@@ -24,6 +24,10 @@ public class DepartmentService {
         return departmentDaoImpl.view();
     }
 
+    public int viewCount() {
+        return departmentDaoImpl.viewCount();
+    }
+
     public Department getById(String deptNo) {
         return departmentDaoImpl.getById(deptNo);
     }

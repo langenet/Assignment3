@@ -30,6 +30,10 @@ public class EmployeeService {
         return employeeDaoImpl.view();
     }
 
+    public int viewCount() {
+        return employeeDaoImpl.viewCount();
+    }
+
     public Employee getById(int id) {
         return employeeDaoImpl.getById(id);
     }

@@ -11,46 +11,53 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Department Page</title>
+        <style>
+            /*
+            Source: https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body
+            Author: roko C. Buljan
+            date: 2017-12-21
+            */
+
+            .tableFixHead    { overflow-y: auto; height: 450px; }
+            .tableFixHead th { position: sticky; top: 0; }
+
+            table  { border-collapse: collapse; width: 35%; }
+            th, td { padding: 8px 16px; }
+            th     { background:#eee; }
+        </style>
     </head>
     <body>
         <%@ include file="header.jsp" %>  
 
     <center>
         <h1>Departments</h1>
-        <!--        <form action ="DepartmentServlet" method ="POST">-->
-        <!--            <input type="hidden" value="getById" name="method" />
-                    Search by Department Id: <input type="text" name ="deptNo"/>
-                    <input type ="submit" value="submit"/>-->
         <hr/>
-<!--            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
-            Add Department
-        </a>-->
         <br/>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Department ID</th>
-                    <th>Department Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${departments}" var="department">
+        <div style="tableFixHead">
+            <table border="1">
+                <thead>
                     <tr>
-                        <td>
-
-                            <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
-                                ${department.deptNo}
-                            </a>
-                        </td>
-                        <td>
-                            ${department.deptName}
-                        </td>
+                        <th>Department ID</th>
+                        <th>Department Name</th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <c:forEach items="${departments}" var="department">
+                        <tr>
+                            <td>
 
-        <!--</form>-->
-        <center>
-            </body>
-            </html>
+                                <a href="${pageContext.request.contextPath}/DepartmentServlet?deptNo=${department.deptNo}&method=getById">
+                                    ${department.deptNo}
+                                </a>
+                            </td>
+                            <td>
+                                ${department.deptName}
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </center>
+</body>
+</html>

@@ -22,5 +22,7 @@ public interface EmployeeDao {
 
     List<Employee> view();
 
+    int viewCount();
+
     Employee getById(int id);
 }

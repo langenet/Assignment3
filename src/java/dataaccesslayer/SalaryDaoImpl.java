@@ -35,7 +35,8 @@ public class SalaryDaoImpl implements SalaryDao {
 
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("select * from salaries order by emp_no desc limit 20");
+            pstmt = con.prepareStatement("select emp_no, salary, from_date, to_date "
+                    + "from salaries order by emp_no desc");
 
             rs = pstmt.executeQuery();
             int empNo = -1;
@@ -77,6 +78,45 @@ public class SalaryDaoImpl implements SalaryDao {
         }
 
         return salaries;
+    }
+
+    @Override
+    public int viewCount() {
+//        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int viewCount = -1;
+
+        try (Connection con = dataSource.createConnection()) {
+
+            pstmt = con.prepareStatement("select count(*) count from salaries");
+
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                viewCount = rs.getInt("count");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return viewCount;
+        } finally {
+            try {
+                if (pstmt != null) {
+                    pstmt.close();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+            try {
+                if (dataSource.getConnection() != null) {
+                    dataSource.closeConnection();
+                }
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }
+        }
+        return viewCount;
     }
 
     @Override

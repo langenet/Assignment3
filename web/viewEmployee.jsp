@@ -15,6 +15,7 @@
             display: inline;
         }
     </style>
+
     <body>
 
     <center>
@@ -26,7 +27,7 @@
                 Edit Employee</a>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp</p>
 
 
-        <p><a href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}">
+        <p><a class="confirmDelete" href="${pageContext.request.contextPath}/EmployeeServlet?method=delete&empNo=${employee.empNo}">
                 Delete Employee</a></p>
 
         <br/>
@@ -84,3 +85,19 @@
     </center>
 </body>
 </html>
+    <script>
+
+        /*
+         * source: https://stackoverflow.com/questions/10462839/how-to-display-a-confirmation-dialog-when-clicking-an-a-link
+         * author: kapa
+         * date: 2012-05-05
+         */
+        var elems = document.getElementsByClassName('confirmDelete');
+        var confirmIt = function (e) {
+            if (!confirm('Are you sure you want to delete this employee?'))
+                e.preventDefault();
+        };
+        for (var i = 0, l = elems.length; i < l; i++) {
+            elems[i].addEventListener('click', confirmIt, false);
+        }
+    </script> 

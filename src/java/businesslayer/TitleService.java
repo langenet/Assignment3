@@ -23,6 +23,10 @@ public class TitleService {
         return titleDaoImpl.view();
     }
 
+    public int viewCount() {
+        return titleDaoImpl.viewCount();
+    }
+
     public boolean add(int empNo, String title, Date fromDate, Date toDate) {
         return titleDaoImpl.add(empNo, title, fromDate, toDate);
     }

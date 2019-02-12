@@ -23,6 +23,10 @@ public class DepartmentEmployeeService {
         return deptEmployeeImpl.view();
     }
 
+    public int viewCount() {
+        return deptEmployeeImpl.viewCount();
+    }
+
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
         return deptEmployeeImpl.add(empNo, deptNo, fromDate, toDate);
     }

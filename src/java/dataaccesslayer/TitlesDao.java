@@ -17,6 +17,8 @@ public interface TitlesDao {
 
     List<Title> view();
 
+    int viewCount();
+
     public boolean add(int empNo, String title, Date fromDate, Date toDate);
 
     public Title getById(int empNo, String title, Date fromDate);

@@ -23,6 +23,10 @@ public class SalaryService {
         return salaryDaoImpl.view();
     }
 
+    public int viewCount() {
+        return salaryDaoImpl.viewCount();
+    }
+
     public boolean add(int empNo, int salary, Date fromDate, Date toDate) {
         return salaryDaoImpl.add(empNo, salary, fromDate, toDate);
     }

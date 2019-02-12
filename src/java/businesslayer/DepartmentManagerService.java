@@ -23,6 +23,10 @@ public class DepartmentManagerService {
         return deptManagerDaoImpl.view();
     }
 
+    public int viewCount() {
+        return deptManagerDaoImpl.viewCount();
+    }
+
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
         return deptManagerDaoImpl.add(empNo, deptNo, fromDate, toDate);
     }

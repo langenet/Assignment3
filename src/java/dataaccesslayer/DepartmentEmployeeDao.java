@@ -17,6 +17,8 @@ public interface DepartmentEmployeeDao {
 
     List<DepartmentEmployee> view();
 
+    int viewCount();
+
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate);
 
     public DepartmentEmployee getById(int empNo, String deptNo);

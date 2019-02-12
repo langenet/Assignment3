@@ -11,6 +11,20 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Department Employees</title>
+        <style>
+            /*
+            Source: https://stackoverflow.com/questions/21168521/table-fixed-header-and-scrollable-body
+            Author: roko C. Buljan
+            date: 2017-12-21
+            */
+
+            .tableFixHeaddeptEmp    { overflow-y: auto; height: 250px; }
+            .tableFixHeaddeptEmp th { position: sticky; top: 0; }
+
+            table  { border-collapse: collapse; width: 75%; }
+            th, td { padding: 8px 16px; }
+            th     { background:#eee; }
+        </style>
     </head>
     <body>
         <%@ include file="header.jsp" %>  
@@ -18,43 +32,38 @@
     <center>
         <h1>Department Employees</h1>
         <form action ="DepartmentEmployeeServlet" method ="POST">
-            <!--            <input type="hidden" value="getById" name="method" />
-                        Search by Department Manager Id: <input type="text" name ="deptNo"/>
-                        <input type ="submit" value="submit"/>-->
             <hr/>
-<!--            <a href="${pageContext.request.contextPath}/addDepartment.jsp">
-                Add Department
-            </a>-->
             <br/>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>Employee Id</th>
-                        <th>Department No</th>
-                        <th>From Date</th>
-                        <th>To Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${departmentEmployees}" var="departmentEmployee">
+            <div style="tableFixHeaddeptEmp">
+                <table border="1">
+                    <thead>
                         <tr>
-                            <td>
-                                ${departmentEmployee.empNo}
-                            </td>
-                            <td>
-                                ${departmentEmployee.deptNo}
-                            </td>
-                            <td>
-                                ${departmentEmployee.fromDate}
-                            </td>
-                            <td>
-                                ${departmentEmployee.toDate}
-                            </td>
+                            <th>Employee Id</th>
+                            <th>Department No</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${departmentEmployees}" var="departmentEmployee">
+                            <tr>
+                                <td>
+                                    ${departmentEmployee.empNo}
+                                </td>
+                                <td>
+                                    ${departmentEmployee.deptNo}
+                                </td>
+                                <td>
+                                    ${departmentEmployee.fromDate}
+                                </td>
+                                <td>
+                                    ${departmentEmployee.toDate}
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </form>
     </center>
 </body>

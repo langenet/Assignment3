@@ -6,6 +6,7 @@
 package datatransferobjects;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -165,6 +166,51 @@ public class Employee{
 
     public void setDepartment(Department department) {
         this.department = department;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + this.empNo;
+        hash = 29 * hash + Objects.hashCode(this.birthDate);
+        hash = 29 * hash + Objects.hashCode(this.firstName);
+        hash = 29 * hash + Objects.hashCode(this.lastName);
+        hash = 29 * hash + Objects.hashCode(this.gender);
+        hash = 29 * hash + Objects.hashCode(this.hireDate);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employee other = (Employee) obj;
+        if (this.empNo != other.empNo) {
+            return false;
+        }
+        if (!Objects.equals(this.firstName, other.firstName)) {
+            return false;
+        }
+        if (!Objects.equals(this.lastName, other.lastName)) {
+            return false;
+        }
+        if (!Objects.equals(this.gender, other.gender)) {
+            return false;
+        }
+        if (!Objects.equals(this.birthDate, other.birthDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.hireDate, other.hireDate)) {
+            return false;
+        }
+        return true;
     }
     
     

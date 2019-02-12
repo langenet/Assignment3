@@ -17,6 +17,8 @@ public interface DeptManagerDao {
 
     List<DepartmentManager> view();
 
+    int viewCount();
+
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate);
 
     public DepartmentManager getById(int empNo, String deptNo);

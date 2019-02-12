@@ -17,6 +17,8 @@ public interface SalaryDao {
 
     List<Salary> view();
 
+    int viewCount();
+
     public boolean add(int empNo, int salary, Date fromDate, Date toDate);
 
     public Salary getById(int empNo, Date fromDate);
