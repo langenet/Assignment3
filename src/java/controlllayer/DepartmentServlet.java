@@ -20,38 +20,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class DepartmentServlet extends HttpServlet {
 
-    DepartmentService departmentService = new DepartmentService();
-    Department department;
-    List<Department> departments;
-    String method = null;
-    String deptNo = "";
-    String deptName = "";
+    private DepartmentService departmentService = new DepartmentService();
+    private Department department;
+    private List<Department> departments;
+    private String method = null;
+    private String deptNo = "";
+    private String deptName = "";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        method = request.getParameter("method");
+      //  method = request.getParameter("method");
 
-        if (method != null) {
-
-            switch (method) {
-                case "add":
-//                case "update":
-//                    add(request, response);
-//                    break;
-                case "view": // might be able to remove this one
-                    view(request, response);
-                    break;
-//                case "delete":
-//                    delete(request, response);
-//                    break;
-                default:
-                    view(request, response);
-                    break;
-            }
-        } else {
+      //  if (method != null) {
             view(request, response);
-        }
+   
     }
 
     private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
