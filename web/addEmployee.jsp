@@ -175,7 +175,7 @@
                     </td>
                     <td>
                         <input type="text" name="salary" required
-                           pattern="^\d{1,9}\$"    
+                           pattern="^[1-9][0-9]{0,9}$" Title="Rounded to the nearest dollar" 
                     </td>
                 </tr>
                 <tr>
