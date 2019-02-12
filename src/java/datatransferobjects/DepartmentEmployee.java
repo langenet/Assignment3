@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
+ * Data Transfer Object for the Department Employee Table
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentEmployee {
 
@@ -27,51 +28,6 @@ public class DepartmentEmployee {
         this.toDate = builder.toDate;
     }
 
-    public static class Builder {
-
-        private int empNo;
-        private String deptNo;
-        private Date fromDate;
-        private Date toDate;
-
-        public Builder(int empNo,
-                String deptNo,
-                Date fromDate,
-                Date toDate) {
-
-            this.empNo = empNo;
-            this.deptNo = deptNo;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-        }
-
-        public DepartmentEmployee build() {
-            return new DepartmentEmployee(this);
-        }
-
-        public Builder setEmpNo(int empNo) {
-            this.empNo = empNo;
-            return this;
-        }
-
-        public Builder setDeptNo(String deptNo) {
-            this.deptNo = deptNo;
-            return this;
-
-        }
-
-        public Builder setFromDate(Date fromDate) {
-            this.fromDate = fromDate;
-            return this;
-
-        }
-
-        public Builder setToDate(Date toDate) {
-            this.toDate = toDate;
-            return this;
-
-        }
-    }
 
     public int getEmpNo() {
         return empNo;
@@ -137,6 +93,50 @@ public class DepartmentEmployee {
         }
         return true;
     }
-    
-    
+    public static class Builder {
+        
+        private int empNo;
+        private String deptNo;
+        private Date fromDate;
+        private Date toDate;
+        
+        public Builder(int empNo,
+                String deptNo,
+                Date fromDate,
+                Date toDate) {
+            
+            this.empNo = empNo;
+            this.deptNo = deptNo;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+        
+        public DepartmentEmployee build() {
+            return new DepartmentEmployee(this);
+        }
+        
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+        }
+        
+        public Builder setDeptNo(String deptNo) {
+            this.deptNo = deptNo;
+            return this;
+            
+        }
+        
+        public Builder setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+            
+        }
+        
+        public Builder setToDate(Date toDate) {
+            this.toDate = toDate;
+            return this;
+            
+        }
+    }
+
 }

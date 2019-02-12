@@ -16,16 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentEmployeeServlet extends HttpServlet {
 
-    private DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
-    private DepartmentEmployee departmentEmployee;
+    private final DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
     private List<DepartmentEmployee> departmentEmployees;
-
-    String method = null;
-    int empNo = -1;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,12 +35,7 @@ public class DepartmentEmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // Need to figure out based on the request coming in which method
-        // needs to be invoked at the service level
-//        method = request.getParameter("method");
-//        if (method != null) {
             view(request, response);
-//        }
     }
 
   

@@ -12,10 +12,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
- * @author Robert
+ * Data Source object to make a connection to the database and return the connection object
+ * @author Robert Lange and Alexander Riccio
  */
 public class DataSource {
+    public static DataSource getInstance() {
+        return InnerDataSource.INSTANCE;
+    }
 
     private Connection connection = null;
     private String connectionString = "jdbc:mysql://localhost:3306/employees";
@@ -26,15 +29,6 @@ public class DataSource {
 
     }
 
-    private static class InnerDataSource {
-
-        private static final DataSource INSTANCE
-                = new DataSource();
-    }
-
-    public static DataSource getInstance() {
-        return InnerDataSource.INSTANCE;
-    }
 
     public Connection createConnection() {
         try {
@@ -72,5 +66,10 @@ public class DataSource {
 
     public void closeConnection() throws SQLException {
         this.connection.close();
+    }
+    private static class InnerDataSource {
+        
+        private static final DataSource INSTANCE
+                = new DataSource();
     }
 }

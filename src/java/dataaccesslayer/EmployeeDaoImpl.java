@@ -7,16 +7,17 @@ package dataaccesslayer;
 
 import datatransferobjects.Employee;
 import java.sql.Connection;
-import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
+ * DAO Implementation for Employee to View, Add, GetByID, update, delete.
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
 public class EmployeeDaoImpl implements EmployeeDao {
 
@@ -25,9 +26,15 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public EmployeeDaoImpl() {
     }
 
+    /**
+     * Adding a Employee to the table
+     *
+     * @param employee
+     *
+     * @return
+     */
     @Override
     public int add(Employee employee) {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         int empNo = -1;
         try (Connection con = dataSource.createConnection()) {
@@ -72,9 +79,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return empNo;
     }
 
+    /**
+     * update an Employee record
+     *
+     * @param employee
+     * @return
+     */
     @Override
     public boolean update(Employee employee) {
-//        Connection con = null;
         PreparedStatement pstmt = null;
 
         try (Connection con = dataSource.createConnection()) {
@@ -111,9 +123,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return true;
     }
 
+    /**
+     * Get a list of Employee
+     *
+     * @return a list of Department employees
+     */
     @Override
     public List<Employee> view() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Employee employee = null;
@@ -172,9 +188,13 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employees;
     }
 
+    /**
+     * A count of the Employee table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -211,19 +231,24 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return viewCount;
     }
 
+    /**
+     * Getting Employee by providing the primary key columns
+     *
+     * @param empNo
+     * @return
+     */
     @Override
-    public Employee getById(int id) {
-//        Connection con = null;
+    public Employee getById(int empNo) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Employee employee = null;
 
         try (Connection con = dataSource.createConnection()) {
             pstmt = con.prepareStatement("select * from employees where emp_No = ?");
-            pstmt.setInt(1, id); // ToDo get the max employee number currently in the data base and set it + 1 here.
+            pstmt.setInt(1, empNo); // ToDo get the max employee number currently in the data base and set it + 1 here.
 
             rs = pstmt.executeQuery();
-            int empNo = -1;
+            int empNoValue = -1;
             Date birthDate = null;
             String firstName = "";
             String lastName = "";
@@ -231,7 +256,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             Date hireDate = null;
 
             while (rs.next()) {
-                empNo = rs.getInt("emp_no");
+                empNoValue = rs.getInt("emp_no");
                 birthDate = rs.getDate("birth_date");
                 firstName = rs.getString("first_name");
                 lastName = rs.getString("last_name");
@@ -240,7 +265,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
             }
             if (empNo > 0) {
-                employee = new Employee.Builder(id,
+                employee = new Employee.Builder(empNoValue,
                         birthDate,
                         firstName,
                         lastName,
@@ -270,6 +295,12 @@ public class EmployeeDaoImpl implements EmployeeDao {
         return employee;
     }
 
+    /**
+     * Delete an Employee
+     *
+     * @param employee
+     * @return
+     */
     @Override
     public boolean delete(Employee employee) {
         //        Connection con = null;

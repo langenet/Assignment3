@@ -15,8 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * DAO Implementation for Department Employee to View, Add, GetByID.
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
 
@@ -25,9 +26,13 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
     public DepartmentEmployeeDaoImpl() {
     }
 
+    /**
+     * Get a list of DepartmentEmployees
+     *
+     * @return a list of Department employees
+     */
     @Override
     public List<DepartmentEmployee> view() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DepartmentEmployee departmentEmployee = null;
@@ -80,9 +85,13 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         return departmentEmployees;
     }
 
+    /**
+     * A count of the DepartmentEmployee table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -119,9 +128,16 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         return viewCount;
     }
 
+    /**
+     * Getting DepartmentEmployee by providing the primary key columns
+     *
+     * @param empNo
+     * @param deptNo
+     * @param fromDate
+     * @return
+     */
     @Override
     public DepartmentEmployee getById(int empNo, String deptNo, Date fromDate) {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DepartmentEmployee departmentEmployee = null;
@@ -177,6 +193,15 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         return departmentEmployee;
     }
 
+    /**
+     * Adding a DepartmentEmployee to the table
+     *
+     * @param empNo
+     * @param deptNo
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
     @Override
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
 

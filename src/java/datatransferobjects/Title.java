@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
+ * Data Transfer Object for the Title Table
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio Lange and Alexander Riccio
  */
 public class Title {
 
@@ -27,51 +28,6 @@ public class Title {
         this.toDate = builder.toDate;
     }
 
-    public static class Builder {
-
-        private int empNo;
-        private String title;
-        private Date fromDate;
-        private Date toDate;
-
-        public Builder(int empNo,
-                String title,
-                Date fromDate,
-                Date toDate) {
-
-            this.empNo = empNo;
-            this.title = title;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-        }
-
-        public Title build() {
-            return new Title(this);
-        }
-
-        public Builder setEmpNo(int empNo) {
-            this.empNo = empNo;
-            return this;
-
-        }
-
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-
-        }
-
-        public Builder setFromDate(Date fromDate) {
-            this.fromDate = fromDate;
-            return this;
-
-        }
-
-        public Builder setToDate(Date toDate) {
-            this.toDate = toDate;
-            return this;
-        }
-    }
 
     public int getEmpNo() {
         return empNo;
@@ -141,6 +97,50 @@ public class Title {
         }
         return true;
     }
-    
-    
+    public static class Builder {
+        
+        private int empNo;
+        private String title;
+        private Date fromDate;
+        private Date toDate;
+        
+        public Builder(int empNo,
+                String title,
+                Date fromDate,
+                Date toDate) {
+            
+            this.empNo = empNo;
+            this.title = title;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+        
+        public Title build() {
+            return new Title(this);
+        }
+        
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+            
+        }
+        
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+            
+        }
+        
+        public Builder setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+            
+        }
+        
+        public Builder setToDate(Date toDate) {
+            this.toDate = toDate;
+            return this;
+        }
+    }
+
 }

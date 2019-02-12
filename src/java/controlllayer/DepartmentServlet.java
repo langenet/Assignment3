@@ -16,23 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentServlet extends HttpServlet {
 
-    private DepartmentService departmentService = new DepartmentService();
-    private Department department;
+    private final DepartmentService departmentService = new DepartmentService();
     private List<Department> departments;
-    private String method = null;
-    private String deptNo = "";
-    private String deptName = "";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-      //  method = request.getParameter("method");
-
-      //  if (method != null) {
             view(request, response);
    
     }

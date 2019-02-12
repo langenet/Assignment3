@@ -9,17 +9,40 @@ import datatransferobjects.Department;
 import java.util.List;
 
 /**
+ * DAO Interface for Department to View, Add, GetByID.
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public interface DepartmentDao {
 
+    /**
+     * Get a list of Departments
+     *
+     * @return a list of Department employees
+     */
     List<Department> view();
 
+    /**
+     * A count of the Departments table
+     *
+     * @return int value representing the count of the table
+     */
     int viewCount();
 
+    /**
+     * Getting Department by providing the primary key columns
+     *
+     * @param deptNo
+     * @return
+     */
     Department getById(String deptNo);
 
-    String add(String deptName);
+    /**
+     * Adding a Department to the table
+     *
+     * @param deptNo
+     * @return
+     */
+    String add(String deptNo);
 
 }

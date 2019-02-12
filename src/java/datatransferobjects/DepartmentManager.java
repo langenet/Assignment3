@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
+ * Data Transfer Object for the Department Manager Table
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentManager {
 
@@ -27,51 +28,6 @@ public class DepartmentManager {
         this.toDate = builder.toDate;
     }
 
-    public static class Builder {
-
-        private int empNo;
-        private String deptNo;
-        private java.util.Date fromDate;
-        private java.util.Date toDate;
-
-        public Builder(int empNo,
-                String deptNo,
-                java.util.Date fromDate,
-                java.util.Date toDate) {
-
-            this.empNo = empNo;
-            this.deptNo = deptNo;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-        }
-
-        public DepartmentManager build() {
-            return new DepartmentManager(this);
-        }
-
-        public Builder setEmpNo(int empNo) {
-            this.empNo = empNo;
-            return this;
-        }
-
-        public Builder setDeptNo(String deptNo) {
-            this.deptNo = deptNo;
-            return this;
-
-        }
-
-        public Builder setFromDate(java.util.Date fromDate) {
-            this.fromDate = fromDate;
-            return this;
-
-        }
-
-        public Builder setToDate(java.util.Date toDate) {
-            this.toDate = toDate;
-            return this;
-
-        }
-    }
 
     public int getEmpNo() {
         return empNo;
@@ -141,5 +97,50 @@ public class DepartmentManager {
         }
         return true;
     }
-    
+    public static class Builder {
+        
+        private int empNo;
+        private String deptNo;
+        private java.util.Date fromDate;
+        private java.util.Date toDate;
+        
+        public Builder(int empNo,
+                String deptNo,
+                java.util.Date fromDate,
+                java.util.Date toDate) {
+            
+            this.empNo = empNo;
+            this.deptNo = deptNo;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+        
+        public DepartmentManager build() {
+            return new DepartmentManager(this);
+        }
+        
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+        }
+        
+        public Builder setDeptNo(String deptNo) {
+            this.deptNo = deptNo;
+            return this;
+            
+        }
+        
+        public Builder setFromDate(java.util.Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+            
+        }
+        
+        public Builder setToDate(java.util.Date toDate) {
+            this.toDate = toDate;
+            return this;
+            
+        }
+    }
+
 }

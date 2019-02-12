@@ -10,7 +10,7 @@ package factory;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DTOFactory {
 //    public static DTO getDTO(String dtoType){

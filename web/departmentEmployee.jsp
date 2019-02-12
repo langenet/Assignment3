@@ -1,7 +1,7 @@
 <%-- 
     Document   : departmentEmployee
     Created on : 9-Feb-2019, 10:51:45 PM
-    Author     : alexr
+    Author     : Robert Lange and Alexander Riccio
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

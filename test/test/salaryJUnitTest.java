@@ -6,18 +6,16 @@
 package test;
 
 import businesslayer.SalaryService;
-import businesslayer.TitleService;
 import datatransferobjects.Salary;
-import datatransferobjects.Title;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class salaryJUnitTest {
 
@@ -66,7 +64,7 @@ public class salaryJUnitTest {
         int empNo = 10001;
         int salary = 60117;
         Date fromDate = new GregorianCalendar(1947, 9, 8).getTime();
-        Date toDate = new GregorianCalendar(1929, 2, 24).getTime();
+        Date toDate = new GregorianCalendar(1929, 1, 24).getTime();
 
         Salary firstSalary = new Salary.Builder(empNo,
                 salary,

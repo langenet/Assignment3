@@ -1,7 +1,7 @@
 <%-- 
     Document   : addDepartment
     Created on : Feb 9, 2019, 9:22:42 PM
-    Author     : Robert
+    Author     : Robert Lange and Alexander Riccio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,7 @@
 <%-- 
     Document   : title
     Created on : 9-Feb-2019, 11:46:36 PM
-    Author     : alexr
+    Author     : Robert Lange and Alexander Riccio
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

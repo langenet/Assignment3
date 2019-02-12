@@ -1,7 +1,7 @@
 <%-- 
     Document   : viewEmployee
     Created on : 7-Feb-2019, 8:48:08 PM
-    Author     : alexr
+    Author     : Robert Lange and Alexander Riccio
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>

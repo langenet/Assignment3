@@ -9,20 +9,56 @@ import datatransferobjects.Employee;
 import java.util.List;
 
 /**
+ * DAO Interface for Employee to View, Add, GetByID, update, delete.
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
 public interface EmployeeDao {
 
+    /**
+     * Adding a Employee to the table
+     *
+     * @param employee
+     *
+     * @return
+     */
     int add(Employee employee);
 
+    /**
+     * update an Employee record
+     *
+     * @param employee
+     * @return
+     */
     boolean update(Employee employee);
 
-    boolean delete(Employee employee);
-
+    /**
+     * Get a list of Employee
+     *
+     * @return a list of Department employees
+     */
     List<Employee> view();
 
+    /**
+     * A count of the Employee table
+     *
+     * @return int value representing the count of the table
+     */
     int viewCount();
 
-    Employee getById(int id);
+    /**
+     * Getting Employee by providing the primary key columns
+     *
+     * @param empNo
+     * @return
+     */
+    Employee getById(int empNo);
+
+    /**
+     * Delete an Employee
+     *
+     * @param employee
+     * @return
+     */
+    boolean delete(Employee employee);
 }

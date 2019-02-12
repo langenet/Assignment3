@@ -15,8 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * DAO Implementation for Salary to View, Add, GetByID.
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class SalaryDaoImpl implements SalaryDao {
 
@@ -25,9 +26,13 @@ public class SalaryDaoImpl implements SalaryDao {
     public SalaryDaoImpl() {
     }
 
+    /**
+     * Get a list of Salaries
+     *
+     * @return a list of Salaries
+     */
     @Override
     public List<Salary> view() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Salary salary = null;
@@ -80,9 +85,13 @@ public class SalaryDaoImpl implements SalaryDao {
         return salaries;
     }
 
+    /**
+     * A count of the Salary table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -119,9 +128,15 @@ public class SalaryDaoImpl implements SalaryDao {
         return viewCount;
     }
 
+    /**
+     * Getting Salary by providing the primary key columns
+     *
+     * @param empNo
+     * @param fromDate
+     * @return
+     */
     @Override
     public Salary getById(int empNo, Date fromDate) {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Salary salary = null;
@@ -175,6 +190,15 @@ public class SalaryDaoImpl implements SalaryDao {
         return salary;
     }
 
+    /**
+     * Adding a Salary to the table
+     *
+     * @param empNo
+     * @param salary
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
     public boolean add(int empNo, int salary, Date fromDate, Date toDate) {
         PreparedStatement pstmt = null;
 

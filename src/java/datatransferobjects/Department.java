@@ -8,8 +8,8 @@ package datatransferobjects;
 import java.util.Objects;
 
 /**
- *
- * @author alexr
+ * Data Transfer Object for the Department Table
+ * @author Robert Lange and Alexander Riccio
  */
 public class Department {
 
@@ -22,32 +22,6 @@ public class Department {
         this.deptName = builder.deptName;
     }
 
-    public static class Builder {
-
-        private String deptNo;
-        private String deptName;
-        public Department build;
-
-        public Builder(String deptNo, String deptName) {
-            this.deptNo = deptNo;
-            this.deptName = deptName;
-        }
-        
-        public Department build(){
-            return new Department(this);
-        }
-
-        public Builder setDeptNo(String deptNo) {
-            this.deptNo = deptNo;
-            return this;
-        }
-
-        public Builder setDeptName(String deptName) {
-            this.deptName = deptName;
-            return this;
-        }
-        
-    }
 
     public String getDeptNo() {
         return deptNo;
@@ -92,6 +66,32 @@ public class Department {
             return false;
         }
         return true;
+    }
+    public static class Builder {
+        
+        private String deptNo;
+        private String deptName;
+        public Department build;
+        
+        public Builder(String deptNo, String deptName) {
+            this.deptNo = deptNo;
+            this.deptName = deptName;
+        }
+        
+        public Department build(){
+            return new Department(this);
+        }
+        
+        public Builder setDeptNo(String deptNo) {
+            this.deptNo = deptNo;
+            return this;
+        }
+        
+        public Builder setDeptName(String deptName) {
+            this.deptName = deptName;
+            return this;
+        }
+        
     }
     
     

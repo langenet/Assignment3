@@ -6,11 +6,7 @@
 package controlllayer;
 
 import businesslayer.DepartmentManagerService;
-import businesslayer.DepartmentService;
-import businesslayer.EmployeeService;
-import datatransferobjects.Department;
 import datatransferobjects.DepartmentManager;
-import datatransferobjects.Employee;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -20,24 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentManagerServlet extends HttpServlet {
 
-    EmployeeService employeeService = new EmployeeService();
-    Employee employee;
-    List<Employee> employees;
-
-    DepartmentService departmentService = new DepartmentService();
-    Department department;
-    List<Department> departments;
-
-    DepartmentManagerService departmentManagerService = new DepartmentManagerService();
-    DepartmentManager departmentManager;
-    List<DepartmentManager> departmentManagers;
-
-    String method = null;
-    int empNo = -1;
+    private final DepartmentManagerService  departmentManagerService = new DepartmentManagerService();
+    private List<DepartmentManager> departmentManagers;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -51,13 +35,7 @@ public class DepartmentManagerServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        Employee employee = null;
-        // Need to figure out based on the request coming in which method
-        // needs to be invoked at the service level
-//        method = request.getParameter("method");
-//        if (method != null) {
-            view(request, response);
-   //     }
+        view(request, response);
     }
 
     private void view(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -65,6 +43,7 @@ public class DepartmentManagerServlet extends HttpServlet {
         request.setAttribute("departmentManagers", departmentManagers);
         request.getRequestDispatcher("departmentManager.jsp").forward(request, response);
     }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

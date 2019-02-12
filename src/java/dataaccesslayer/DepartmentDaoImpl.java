@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Implementation of DAO for Department to View, Add, GetByID.
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentDaoImpl implements DepartmentDao {
 
@@ -25,6 +26,11 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     }
 
+    /**
+     * Get a list of Departments
+     *
+     * @return a list of Department employees
+     */
     @Override
     public List<Department> view() {
         PreparedStatement pstmt = null;
@@ -71,9 +77,13 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return departments;
     }
 
+    /**
+     * A count of the Departments table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -110,6 +120,12 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return viewCount;
     }
 
+    /**
+     * Getting Department by providing the primary key columns
+     *
+     * @param deptNo
+     * @return
+     */
     @Override
     public Department getById(String deptNo) {
         PreparedStatement pstmt = null;
@@ -154,8 +170,14 @@ public class DepartmentDaoImpl implements DepartmentDao {
         return department;
     }
 
+    /**
+     * Adding a Department to the table
+     *
+     * @param deptNo
+     * @return
+     */
     @Override
-    public String add(String deptName) {
+    public String add(String deptNo) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         String newDeptNo = "";
@@ -184,7 +206,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
                         newDeptNo = "";
                 }
                 pstmt.setString(1, newDeptNo);
-                pstmt.setString(2, deptName);
+                pstmt.setString(2, deptNo);
                 pstmt.executeUpdate();
             }
 

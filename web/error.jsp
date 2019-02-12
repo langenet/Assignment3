@@ -1,7 +1,7 @@
 <%-- 
     Document   : error
     Created on : 8-Feb-2019, 9:45:56 AM
-    Author     : alexr
+    Author     : Robert Lange and Alexander Riccio
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -15,8 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * DAO Implementation for Department Manager to View, Add, GetByID.
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
 public class DeptManagerDaoImpl implements DeptManagerDao {
 
@@ -25,9 +26,13 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
     public DeptManagerDaoImpl() {
     }
 
+    /**
+     * Get a list of DepartmentManager
+     *
+     * @return a list of Department Managers
+     */
     @Override
     public List<DepartmentManager> view() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DepartmentManager departmentManager = null;
@@ -80,9 +85,13 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
         return departmentManagers;
     }
 
+    /**
+     * A count of the DepartmentManager table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -119,9 +128,15 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
         return viewCount;
     }
 
+    /**
+     * Getting DepartmentManager by providing the primary key columns
+     *
+     * @param empNo
+     * @param deptNo
+     * @return
+     */
     @Override
     public DepartmentManager getById(int empNo, String deptNo) {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         DepartmentManager departmentManager = null;
@@ -175,6 +190,16 @@ public class DeptManagerDaoImpl implements DeptManagerDao {
         return departmentManager;
     }
 
+    /**
+     * Adding a DepartmentManager to the table
+     *
+     * @param empNo
+     * @param deptNo
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
+    @Override
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate) {
         PreparedStatement pstmt = null;
 

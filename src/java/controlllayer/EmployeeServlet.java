@@ -25,20 +25,19 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class EmployeeServlet extends HttpServlet {
 
-    private EmployeeService employeeService = new EmployeeService();
-    private DepartmentService departmentService = new DepartmentService();
-    private DepartmentManagerService departmentManagerService = new DepartmentManagerService();
-    private DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
-    private TitleService titleService = new TitleService();
-    private SalaryService salaryService = new SalaryService();
+    private final EmployeeService employeeService = new EmployeeService();
+    private final DepartmentService departmentService = new DepartmentService();
+    private final DepartmentManagerService departmentManagerService = new DepartmentManagerService();
+    private final DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
+    private final TitleService titleService = new TitleService();
+    private final SalaryService salaryService = new SalaryService();
 
     private Employee employee;
     private List<Employee> employees;
-    private Department department;
     private List<Department> departments;
     private String method = null;
     private int empNo = -1;
@@ -47,18 +46,18 @@ public class EmployeeServlet extends HttpServlet {
     private String firstName = "";
     private String lastName = "";
     private String gender = "";
-    private String departmentNum = "";
+    private String deptNo = "";
     private Date deptFromDate = null;
     private Date deptToDate = null;
     private boolean isManager = false;
-    private Date employeeTypeFrom = null;
-    private Date employeeTypeTo = null;
+    private Date managerFromDate = null;
+    private Date managerToDate = null;
     private String title = "";
-    private Date titleFrom = null;
-    private Date titleTo = null;
+    private Date titleFromDate = null;
+    private Date titleToDate = null;
     private int salary = 0;
-    private Date salaryFrom = null;
-    private Date salaryTo = null;
+    private Date salaryFromDate = null;
+    private Date salaryToDate = null;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -73,8 +72,6 @@ public class EmployeeServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         Employee employee = null;
-        // Need to figure out based on the request coming in which method
-        // needs to be invoked at the service level
         method = request.getParameter("method");
         if (method != null) {
 
@@ -97,9 +94,6 @@ public class EmployeeServlet extends HttpServlet {
                 case "delete":
                     delete(request, response);
                     break;
-//                case "search":
-//                    search(request, response);
-//                    break;
                 case "initAdd":
                     initAdd(request, response);
                     break;
@@ -124,12 +118,12 @@ public class EmployeeServlet extends HttpServlet {
             hireDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("hireDate")).getTime());
             deptFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptFromDate")).getTime());
             deptToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("deptToDate")).getTime());
-            employeeTypeFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerFrom")).getTime());
-            employeeTypeTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerTo")).getTime());
-            titleFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleFrom")).getTime());
-            titleTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleTo")).getTime());
-            salaryFrom = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryFrom")).getTime());
-            salaryTo = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryTo")).getTime());
+            managerFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerFrom")).getTime());
+            managerToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("managerTo")).getTime());
+            titleFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleFrom")).getTime());
+            titleToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("titleTo")).getTime());
+            salaryFromDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryFrom")).getTime());
+            salaryToDate = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(request.getParameter("salaryTo")).getTime());
         } catch (ParseException parseException) {
             parseException.printStackTrace();
         }
@@ -138,7 +132,7 @@ public class EmployeeServlet extends HttpServlet {
         lastName = request.getParameter("lastName");
         gender = request.getParameter("gender");
 
-        departmentNum = request.getParameter("department");
+        deptNo = request.getParameter("department");
         isManager = Boolean.parseBoolean(request.getParameter("isManager"));
         title = request.getParameter("title");
         salary = Integer.parseInt(request.getParameter("salary"));
@@ -159,11 +153,11 @@ public class EmployeeServlet extends HttpServlet {
         empNo = employeeService.add(employee);
         if (empNo > 0) {
             employeeSuccess = true;
-            departmentSuccess = departmentEmployeeService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
-            titleSuccess = titleService.add(empNo, title, titleFrom, titleTo);
-            salarySuccess = salaryService.add(empNo, salary, salaryFrom, salaryTo);
+            departmentSuccess = departmentEmployeeService.add(empNo, deptNo, deptFromDate, deptToDate);
+            titleSuccess = titleService.add(empNo, title, titleFromDate, titleToDate);
+            salarySuccess = salaryService.add(empNo, salary, salaryFromDate, salaryToDate);
             if (isManager) {
-                managerSuccess = departmentManagerService.add(empNo, departmentNum, employeeTypeFrom, employeeTypeTo);
+                managerSuccess = departmentManagerService.add(empNo, deptNo, managerFromDate, managerToDate);
             } else {
                 managerSuccess = true;
             }
@@ -258,66 +252,4 @@ public class EmployeeServlet extends HttpServlet {
         request.setAttribute("employee", employee);
         request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
-
-//    private void search(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        employee = new Employee.Builder(empNo,
-//                birthDate,
-//                firstName,
-//                lastName,
-//                gender,
-//                hireDate).build();
-//        boolean success = employeeService.delete(employee);
-//
-//        if (success) {
-//            view(request, response);
-//        } else {
-//            request.getRequestDispatcher("error.jsp").forward(request, response);
-//        }
-//
-//        empNo = Integer.parseInt(request.getParameter("empNo"));
-//        if (empNo > 0) {
-//            employee = employeeService.getById(empNo);
-//        }
-//        request.setAttribute("employee", employee);
-//        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
-//    }
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        processRequest(request, response);
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
 }

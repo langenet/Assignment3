@@ -15,8 +15,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
+ * DAO Implementation for Title to View, Add, GetByID.
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
 public class TitlesDaoImpl implements TitlesDao {
 
@@ -25,9 +26,13 @@ public class TitlesDaoImpl implements TitlesDao {
     public TitlesDaoImpl() {
     }
 
+    /**
+     * Get a list of Titles
+     *
+     * @return a list of Title
+     */
     @Override
     public List<Title> view() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         Title title = null;
@@ -80,9 +85,13 @@ public class TitlesDaoImpl implements TitlesDao {
         return titles;
     }
 
+    /**
+     * A count of the Title table
+     *
+     * @return int value representing the count of the table
+     */
     @Override
     public int viewCount() {
-//        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
         int viewCount = -1;
@@ -119,6 +128,15 @@ public class TitlesDaoImpl implements TitlesDao {
         return viewCount;
     }
 
+    /**
+     * Adding a Title to the table
+     *
+     * @param empNo
+     * @param title
+     * @param fromDate
+     * @param toDate
+     * @return
+     */
     @Override
     public boolean add(int empNo, String title, Date fromDate, Date toDate) {
         PreparedStatement pstmt = null;
@@ -156,6 +174,15 @@ public class TitlesDaoImpl implements TitlesDao {
         return true;
     }
 
+    /**
+     * Getting Title by providing the primary key columns
+     *
+     * @param empNo
+     * @param searchTitle
+     * @param fromDate
+     * @return
+     */
+    @Override
     public Title getById(int empNo, String searchTitle, Date fromDate) {
         PreparedStatement pstmt = null;
         ResultSet rs = null;

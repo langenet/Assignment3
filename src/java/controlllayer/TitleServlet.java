@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class TitleServlet extends HttpServlet {
 
@@ -39,13 +39,8 @@ public class TitleServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        // Need to figure out based on the request coming in which method
-        // needs to be invoked at the service level
-//        method = request.getParameter("method");
-//        if (method != null) {
 
             view(request, response);
-//        }
     }
 
   

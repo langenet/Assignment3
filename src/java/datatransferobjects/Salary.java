@@ -9,8 +9,9 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
+ * Data Transfer Object for the Salary Table
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class Salary {
 
@@ -27,51 +28,6 @@ public class Salary {
         this.toDate = builder.toDate;
     }
 
-    public static class Builder {
-
-        private int empNo;
-        private double salary;
-        private Date fromDate;
-        private Date toDate;
-
-        public Builder(int empNo,
-                double salary,
-                Date fromDate,
-                Date toDate) {
-
-            this.empNo = empNo;
-            this.salary = salary;
-            this.fromDate = fromDate;
-            this.toDate = toDate;
-        }
-
-        public Salary build() {
-            return new Salary(this);
-        }
-
-        public Builder setEmpNo(int empNo) {
-            this.empNo = empNo;
-            return this;
-        }
-
-        public Builder setSalary(int salary) {
-            this.salary = salary;
-            return this;
-
-        }
-
-        public Builder setFromDate(Date fromDate) {
-            this.fromDate = fromDate;
-            return this;
-
-        }
-
-        public Builder setToDate(Date toDate) {
-            this.toDate = toDate;
-            return this;
-
-        }
-    }
 
     public int getEmpNo() {
         return empNo;
@@ -141,6 +97,50 @@ public class Salary {
         }
         return true;
     }
-    
-    
+    public static class Builder {
+        
+        private int empNo;
+        private double salary;
+        private Date fromDate;
+        private Date toDate;
+        
+        public Builder(int empNo,
+                double salary,
+                Date fromDate,
+                Date toDate) {
+            
+            this.empNo = empNo;
+            this.salary = salary;
+            this.fromDate = fromDate;
+            this.toDate = toDate;
+        }
+        
+        public Salary build() {
+            return new Salary(this);
+        }
+        
+        public Builder setEmpNo(int empNo) {
+            this.empNo = empNo;
+            return this;
+        }
+        
+        public Builder setSalary(int salary) {
+            this.salary = salary;
+            return this;
+            
+        }
+        
+        public Builder setFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+            
+        }
+        
+        public Builder setToDate(Date toDate) {
+            this.toDate = toDate;
+            return this;
+            
+        }
+    }
+
 }

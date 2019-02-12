@@ -1,7 +1,7 @@
 <%-- 
     Document   : addEmployee
     Created on : 8-Feb-2019, 9:30:28 AM
-    Author     : alexr
+    Author     : Robert Lange and Alexander Riccio
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

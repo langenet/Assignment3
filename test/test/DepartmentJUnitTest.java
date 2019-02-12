@@ -6,18 +6,14 @@
 package test;
 
 import businesslayer.DepartmentService;
-import businesslayer.EmployeeService;
 import datatransferobjects.Department;
-import datatransferobjects.Employee;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
-import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
- * @author alexr
+ * @author Robert Lange and Alexander Riccio
  */
 public class DepartmentJUnitTest {
 

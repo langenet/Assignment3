@@ -9,10 +9,12 @@ import java.util.Date;
 import java.util.Objects;
 
 /**
+ * Data Transfer Object for the Employee Table
  *
- * @author Robert
+ * @author Robert Lange and Alexander Riccio
  */
-public class Employee{
+public class Employee {
+
     private int empNo;
     private Date birthDate;
     private String firstName;
@@ -23,70 +25,18 @@ public class Employee{
     private int salary;
     private String title;
     private Department department;
-    
-    private Employee(Builder builder){
-            
-            this.empNo = builder.empNo;
-            this.birthDate = builder.birthDate;
-            this.firstName = builder.firstName;
-            this.lastName = builder.lastName;
-            this.gender = builder.gender;
-            this.hireDate = builder.hireDate;
+
+    private Employee(Builder builder) {
+
+        this.empNo = builder.empNo;
+        this.birthDate = builder.birthDate;
+        this.firstName = builder.firstName;
+        this.lastName = builder.lastName;
+        this.gender = builder.gender;
+        this.hireDate = builder.hireDate;
     }
 
-    public static class Builder{
-        private int empNo;
-        private Date birthDate;
-        private String firstName;
-        private String lastName;
-        private String gender;
-        private Date hireDate;
-        private boolean isManager;
-        private int salary;
-        private String title;
-        private Department department;
-        
-        public Builder( int empNo,
-                Date birthDate,
-                String firstName, 
-                String lastName, 
-                String gender,
-                Date hireDate){
-            
-            this.empNo = empNo;
-            this.birthDate = birthDate;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.gender = gender;
-            this.hireDate = hireDate;
-            
-        }
 
-        public Employee build(){
-            return new Employee(this);
-        }
-        
-        public Builder setIsManager(boolean isManager) {
-            this.isManager = isManager;
-            return this;
-        }
-
-        public Builder setSalary(int salary) {
-            this.salary = salary;
-            return this;
-        }
-
-        public Builder setTitle(String title) {
-            this.title = title;
-            return this;
-        }
-        
-        public Builder setDepartment(Department department) {
-            this.department = department;
-            return this;
-        }
-    }
-    
     // base class starts here
     public int getEmpNo() {
         return empNo;
@@ -212,6 +162,58 @@ public class Employee{
         }
         return true;
     }
-    
-    
+    public static class Builder {
+        
+        private int empNo;
+        private Date birthDate;
+        private String firstName;
+        private String lastName;
+        private String gender;
+        private Date hireDate;
+        private boolean isManager;
+        private int salary;
+        private String title;
+        private Department department;
+        
+        public Builder(int empNo,
+                Date birthDate,
+                String firstName,
+                String lastName,
+                String gender,
+                Date hireDate) {
+            
+            this.empNo = empNo;
+            this.birthDate = birthDate;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.gender = gender;
+            this.hireDate = hireDate;
+            
+        }
+        
+        public Employee build() {
+            return new Employee(this);
+        }
+        
+        public Builder setIsManager(boolean isManager) {
+            this.isManager = isManager;
+            return this;
+        }
+        
+        public Builder setSalary(int salary) {
+            this.salary = salary;
+            return this;
+        }
+        
+        public Builder setTitle(String title) {
+            this.title = title;
+            return this;
+        }
+        
+        public Builder setDepartment(Department department) {
+            this.department = department;
+            return this;
+        }
+    }
+
 }
