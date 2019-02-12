@@ -52,7 +52,7 @@
                                     ${salary.empNo}
                                 </td>
                                 <td>
-                                    ${salary.salary}
+                                    $${salary.salary}.00
                                 </td>
                                 <td>
                                     ${salary.fromDate}

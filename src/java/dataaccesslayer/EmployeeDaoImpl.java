@@ -302,14 +302,14 @@ public class EmployeeDaoImpl implements EmployeeDao {
      * @return
      */
     @Override
-    public boolean delete(Employee employee) {
+    public boolean delete(int empNo) {
         //        Connection con = null;
         PreparedStatement pstmt = null;
 
         try (Connection con = dataSource.createConnection()) {
 
             pstmt = con.prepareStatement("delete from employees where emp_no = ?");
-            pstmt.setInt(1, employee.getEmpNo());
+            pstmt.setInt(1, empNo);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

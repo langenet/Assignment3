@@ -16,7 +16,7 @@ import java.util.Objects;
 public class Salary {
 
     private int empNo;
-    private double salary;
+    private int salary;
     private Date fromDate;
     private Date toDate;
 
@@ -37,7 +37,7 @@ public class Salary {
         this.empNo = empNo;
     }
 
-    public double getSalary() {
+    public int getSalary() {
         return salary;
     }
 
@@ -64,10 +64,10 @@ public class Salary {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.empNo;
-        hash = 83 * hash + (int) (Double.doubleToLongBits(this.salary) ^ (Double.doubleToLongBits(this.salary) >>> 32));
-        hash = 83 * hash + Objects.hashCode(this.fromDate);
-        hash = 83 * hash + Objects.hashCode(this.toDate);
+        hash = 53 * hash + this.empNo;
+        hash = 53 * hash + this.salary;
+        hash = 53 * hash + Objects.hashCode(this.fromDate);
+        hash = 53 * hash + Objects.hashCode(this.toDate);
         return hash;
     }
 
@@ -86,7 +86,7 @@ public class Salary {
         if (this.empNo != other.empNo) {
             return false;
         }
-        if (Double.doubleToLongBits(this.salary) != Double.doubleToLongBits(other.salary)) {
+        if (this.salary != other.salary) {
             return false;
         }
         if (!Objects.equals(this.fromDate, other.fromDate)) {
@@ -97,15 +97,17 @@ public class Salary {
         }
         return true;
     }
+
+  
     public static class Builder {
         
         private int empNo;
-        private double salary;
+        private int salary;
         private Date fromDate;
         private Date toDate;
         
         public Builder(int empNo,
-                double salary,
+                int salary,
                 Date fromDate,
                 Date toDate) {
             

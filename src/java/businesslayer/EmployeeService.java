@@ -74,7 +74,7 @@ public class EmployeeService {
      * @param employee
      * @return
      */
-    public boolean delete(Employee employee) {
-        return employeeDaoImpl.delete(employee);
+    public boolean delete(int empNo) {
+        return employeeDaoImpl.delete(empNo);
     }
 }

@@ -230,26 +230,53 @@ public class EmployeeServlet extends HttpServlet {
 
     private void delete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        employee = new Employee.Builder(empNo,
-                birthDate,
-                firstName,
-                lastName,
-                gender,
-                hireDate).build();
+        empNo = Integer.parseInt(request.getParameter("empNo"));
 
-        boolean success = employeeService.delete(employee);
+        boolean success = employeeService.delete(empNo);
 
         if (success) {
             view(request, response);
         } else {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
-        empNo = Integer.parseInt(request.getParameter("empNo"));
-        if (empNo > 0) {
-            employee = employeeService.getById(empNo);
-        }
-        request.setAttribute("employee", employee);
-        request.getRequestDispatcher("editEmployee.jsp").forward(request, response);
     }
+
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }
+
 }

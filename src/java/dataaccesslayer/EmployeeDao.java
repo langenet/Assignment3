@@ -60,5 +60,5 @@ public interface EmployeeDao {
      * @param employee
      * @return
      */
-    boolean delete(Employee employee);
+    boolean delete(int empNo);
 }
