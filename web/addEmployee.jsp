@@ -175,7 +175,7 @@
                     </td>
                     <td>
                         <input type="text" name="salary" required
-                           pattern="^\d{1-9}\$"    
+                           pattern="^\d{1,9}\$"    
                     </td>
                 </tr>
                 <tr>
