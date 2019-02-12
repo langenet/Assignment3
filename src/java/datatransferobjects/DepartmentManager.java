@@ -6,6 +6,7 @@
 package datatransferobjects;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -103,4 +104,42 @@ public class DepartmentManager {
     public void setToDate(Date toDate) {
         this.toDate = toDate;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 43 * hash + this.empNo;
+        hash = 43 * hash + Objects.hashCode(this.deptNo);
+        hash = 43 * hash + Objects.hashCode(this.fromDate);
+        hash = 43 * hash + Objects.hashCode(this.toDate);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final DepartmentManager other = (DepartmentManager) obj;
+        if (this.empNo != other.empNo) {
+            return false;
+        }
+        if (!Objects.equals(this.deptNo, other.deptNo)) {
+            return false;
+        }
+        if (!Objects.equals(this.fromDate, other.fromDate)) {
+            return false;
+        }
+        if (!Objects.equals(this.toDate, other.toDate)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

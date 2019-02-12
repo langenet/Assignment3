@@ -38,28 +38,36 @@ public class salaryJUnitTest {
         assertTrue(salaryValue.getSalary() == salary);
         assertTrue(salaryValue.getToDate().equals(toDate));
     }
-    
-    
+
     @Test
-    public void testingTitleAdd() {
+    public void testingSalaryAdd() {
+
+        int year = RandomDateOfBirth.randBetween(1900, 1985);
+        int month = RandomDateOfBirth.randBetween(0, 12);
+        int day = RandomDateOfBirth.randBetween(0, 28);
 
         int empNo = 10001;
         int salary = 60117;
-        Date fromDate = new GregorianCalendar(1986, 5, 26).getTime();
-        Date toDate = new GregorianCalendar(1987, 6, 26).getTime();
+        Date fromDate = new GregorianCalendar(year, month, day).getTime();
+
+        year = RandomDateOfBirth.randBetween(1900, 1985);
+        month = RandomDateOfBirth.randBetween(0, 12);
+        day = RandomDateOfBirth.randBetween(0, 28);
+        
+        Date toDate = new GregorianCalendar(year, month, day).getTime();
 
         SalaryService salaryService = new SalaryService();
         assertTrue(salaryService.add(empNo, salary, fromDate, toDate));
     }
 
     @Test
-    public void testingTitleView() {
+    public void testingSalaryView() {
 
         int empNo = 10001;
         int salary = 60117;
-        Date fromDate = new GregorianCalendar(1986, 5, 26).getTime();
-        Date toDate = new GregorianCalendar(1987, 6, 26).getTime();
-        
+        Date fromDate = new GregorianCalendar(1947, 9, 8).getTime();
+        Date toDate = new GregorianCalendar(1929, 2, 24).getTime();
+
         Salary firstSalary = new Salary.Builder(empNo,
                 salary,
                 fromDate,

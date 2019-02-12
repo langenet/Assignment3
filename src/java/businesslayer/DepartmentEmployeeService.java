@@ -31,8 +31,8 @@ public class DepartmentEmployeeService {
         return deptEmployeeImpl.add(empNo, deptNo, fromDate, toDate);
     }
 
-    public DepartmentEmployee getById(int empNo, String deptNo) {
-        return deptEmployeeImpl.getById(empNo, deptNo);
+    public DepartmentEmployee getById(int empNo, String deptNo, Date fromDate) {
+        return deptEmployeeImpl.getById(empNo, deptNo, fromDate);
     }
 
 }

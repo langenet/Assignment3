@@ -38,16 +38,19 @@ public class DepartmentManagerJUnitTest {
         assertTrue(departmentManagerValue.getFromDate().equals(fromDate));
         assertTrue(departmentManagerValue.getToDate().equals(toDate));
     }
-    
-    
+
     @Test
     public void testingDepartmentManagerAdd() {
 
-        int empNo = 10001;
+        int empNo = 100001;
         String deptNo = "d004";
         Date fromDate = new GregorianCalendar(1996, 8, 2).getTime();
         Date toDate = new GregorianCalendar(2006, 4, 25).getTime();
-        
+
+        // This is failing because the database doesn't use an ID column
+        // Since we need to stick with this database design, we need to add
+        // some logic to either verify if the entry is already in the table,
+        // or try to randomize the emp_no and dept_no.  
         DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
         assertTrue(departmentEmployeeService.add(empNo, deptNo, fromDate, toDate));
     }

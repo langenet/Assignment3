@@ -5,6 +5,8 @@
  */
 package datatransferobjects;
 
+import java.util.Objects;
+
 /**
  *
  * @author alexr
@@ -62,4 +64,35 @@ public class Department {
     public void setDeptName(String deptName) {
         this.deptName = deptName;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.deptNo);
+        hash = 29 * hash + Objects.hashCode(this.deptName);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Department other = (Department) obj;
+        if (!Objects.equals(this.deptNo, other.deptNo)) {
+            return false;
+        }
+        if (!Objects.equals(this.deptName, other.deptName)) {
+            return false;
+        }
+        return true;
+    }
+    
+    
 }

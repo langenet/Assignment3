@@ -162,7 +162,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
         try (Connection con = dataSource.createConnection()) {
 
-            pstmt = con.prepareStatement("Select max(dept_no) from departments");
+            pstmt = con.prepareStatement("Select max(dept_no) dept_no from departments");
             rs = pstmt.executeQuery();
             pstmt = con.prepareStatement("INSERT into departments (dept_no, dept_name) "
                     + " Values(?, ?)");

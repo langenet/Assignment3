@@ -21,5 +21,5 @@ public interface DepartmentEmployeeDao {
 
     public boolean add(int empNo, String deptNo, Date fromDate, Date toDate);
 
-    public DepartmentEmployee getById(int empNo, String deptNo);
+    public DepartmentEmployee getById(int empNo, String deptNo, Date fromDate);
 }

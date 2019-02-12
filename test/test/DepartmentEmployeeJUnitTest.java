@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
  *
  * @author alexr
  */
-public class DepartmentEmployeeJUnitTest {
+public class DepartmentEmployeeJUnitTest implements RandomDateOfBirth {
 
     public DepartmentEmployeeJUnitTest() {
     }
@@ -25,14 +25,14 @@ public class DepartmentEmployeeJUnitTest {
     @Test
     public void testingDepartmentEmployeeGetById() {
 
-        int empNo = 10001;
+        int empNo = 100001;
         String deptNo = "d005";
-        Date fromDate = new GregorianCalendar(1986, 5, 26).getTime();
-        Date toDate = new GregorianCalendar(9999, 0, 1).getTime();
+        Date fromDate = new GregorianCalendar(1999, 6, 17).getTime();
+        Date toDate = new GregorianCalendar(2000, 5, 13).getTime();
 
         DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
 
-        DepartmentEmployee departmentEmployeeValue = departmentEmployeeService.getById(empNo, deptNo);
+        DepartmentEmployee departmentEmployeeValue = departmentEmployeeService.getById(empNo, deptNo, fromDate);
         assertTrue(departmentEmployeeValue.getFromDate().equals(fromDate));
         assertTrue(departmentEmployeeValue.getToDate().equals(toDate));
     }
@@ -40,22 +40,35 @@ public class DepartmentEmployeeJUnitTest {
     @Test
     public void testingDepartmentEmployeeAdd() {
 
-        int empNo = 10001;
+        int year = RandomDateOfBirth.randBetween(1900, 1985);
+        int month = RandomDateOfBirth.randBetween(0, 12);
+        int day = RandomDateOfBirth.randBetween(0, 28);
+
+        int empNo = 100001;
         String deptNo = "d004";
-        Date fromDate = new GregorianCalendar(1996, 8, 2).getTime();
-        Date toDate = new GregorianCalendar(2006, 4, 25).getTime();
-        
+        Date fromDate = new GregorianCalendar(year, month, day).getTime();
+
+        year = RandomDateOfBirth.randBetween(2000, 2019);
+        month = RandomDateOfBirth.randBetween(0, 12);
+        day = RandomDateOfBirth.randBetween(0, 28);
+
+        Date toDate = new GregorianCalendar(year, month, day).getTime();
+
         DepartmentEmployeeService departmentEmployeeService = new DepartmentEmployeeService();
+        // This is failing because the database doesn't use an ID column
+        // Since we need to stick with this database design, we need to add
+        // some logic to either verify if the entry is already in the table,
+        // or try to randomize the emp_no and dept_no.  
         assertTrue(departmentEmployeeService.add(empNo, deptNo, fromDate, toDate));
     }
 
     @Test
     public void testingDepartmentEmployeeView() {
 
-        int empNo = 10001;
+        int empNo = 100001;
         String deptNo = "d005";
-        Date fromDate = new GregorianCalendar(1986, 5, 26).getTime();
-        Date toDate = new GregorianCalendar(9999, 0, 1).getTime();
+        Date fromDate = new GregorianCalendar(1999, 6, 17).getTime();
+        Date toDate = new GregorianCalendar(2000, 5, 13).getTime();
 
         DepartmentEmployee firstDepartmentEmployee = new DepartmentEmployee.Builder(empNo,
                 deptNo,

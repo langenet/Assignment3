@@ -120,7 +120,7 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
     }
 
     @Override
-    public DepartmentEmployee getById(int empNo, String deptNo) {
+    public DepartmentEmployee getById(int empNo, String deptNo, Date fromDate) {
 //        Connection con = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -130,10 +130,11 @@ public class DepartmentEmployeeDaoImpl implements DepartmentEmployeeDao {
         try (Connection con = dataSource.createConnection()) {
 
             pstmt = con.prepareStatement("select * from dept_emp where emp_no = ?"
-                    + " and dept_no = ?");
+                    + " and dept_no = ? and from_date = ?");
 
             pstmt.setInt(1, empNo);
             pstmt.setString(2, deptNo);
+            pstmt.setDate(3, new java.sql.Date(fromDate.getTime()));
 
             rs = pstmt.executeQuery();
             int empNoValue = -1;

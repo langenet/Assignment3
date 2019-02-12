@@ -42,10 +42,19 @@ public class TitleJUnitTest {
     @Test
     public void testingTitleAdd() {
 
+        int year = RandomDateOfBirth.randBetween(1900, 1985);
+        int month = RandomDateOfBirth.randBetween(0, 12);
+        int day = RandomDateOfBirth.randBetween(0, 28);
+        
         int empNo = 10001;
         String title = "Senior Engineer";
-        Date fromDate = new GregorianCalendar(1986, 5, 26).getTime();
-        Date toDate = new GregorianCalendar(9999, 0, 1).getTime();
+        Date fromDate = new GregorianCalendar(year, month, day).getTime();
+        
+        year = RandomDateOfBirth.randBetween(1900, 1985);
+        month = RandomDateOfBirth.randBetween(0, 12);
+        day = RandomDateOfBirth.randBetween(0, 28);
+        
+        Date toDate = new GregorianCalendar(year, month, day).getTime();
 
         TitleService titleService = new TitleService();
         assertTrue(titleService.add(empNo, title, fromDate, toDate));
