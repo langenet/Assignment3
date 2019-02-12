@@ -71,7 +71,7 @@ public class EmployeeService {
     /**
      * Delete an Employee
      *
-     * @param employee
+     * @param empNo
      * @return
      */
     public boolean delete(int empNo) {

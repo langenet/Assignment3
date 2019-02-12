@@ -298,7 +298,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
     /**
      * Delete an Employee
      *
-     * @param employee
+     * @param empNo
      * @return
      */
     @Override
